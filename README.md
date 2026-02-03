@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -27,6 +27,7 @@
         <span class="o-desc">Porównaj oferty</span>
     </div>
 </a>
+<link rel="stylesheet" href="css/style.css">
 
 <style>
 .oferomat-mini-box {
