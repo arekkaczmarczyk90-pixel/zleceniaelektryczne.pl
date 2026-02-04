@@ -179,19 +179,71 @@
             <div class="bg-slate-900 p-8 rounded-3xl border border-blue-500 shadow-2xl italic">
                 <h3 class="text-2xl font-black text-blue-400 text-center uppercase mb-8 italic">Odbierz kod dostępu</h3>
                 <div class="space-y-6">
-                    <div class="p-6 bg-black/40 rounded-2xl border border-slate-800">
-                        <p class="text-[10px] text-slate-500 font-black uppercase mb-2">Krok 1: Darowizna Revolut</p>
-                        <p class="text-sm font-bold uppercase">Prześlij <span class="text-white text-xl">30 PLN</span> na numer:</p>
-                        <p class="text-3xl font-black text-white mt-1">786 259 909</p>
-                        <p class="text-[9px] text-slate-500 mt-2 uppercase">W tytule wpisz: DAROWIZNA KOD</p>
-                    </div>
-                    Dokonując wpłaty, potwierdzasz, że jest to dobrowolna darowizna na rzecz osoby fizycznej (Art. 888 KC) na pokrycie kosztów serwera. Otrzymanie kodu jest formą podziękowania za wsparcie projektu
-                    Uwaga: Jako osoba prywatna nie wystawiam faktur VAT ani rachunków. Darowizny nie podlegają odliczeniom kosztów prowadzenia działalności.
-                    Weryfikacja wpłaty odbywa się ręcznie. Kod zostanie odesłany SMS-em zazwyczaj w ciągu 24h."
-                    <div class="p-6 bg-black/40 rounded-2xl border border-slate-800">
-                        <p class="text-[10px] text-slate-500 font-black uppercase mb-4">Krok 2: Odbierz SMS</p>
-                        <a href="sms:786259909?body=PROSZE%20O%20KOD%20DOSTEPU%20(OPLACONE)" class="block w-full bg-blue-600 text-white text-center py-4 rounded-xl font-black uppercase text-sm hover:bg-blue-500 transition shadow-lg">Wyślij SMS po kod</a>
-                    </div>
+                    <div class="max-w-2xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl italic">
+    
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-center">
+        <h2 class="text-white font-black uppercase tracking-tighter text-2xl">Odbierz kod dostępu</h2>
+        <p class="text-blue-100 text-[10px] uppercase font-bold mt-1">Weryfikacja ręczna: SMS w ciągu 15 min - 24h</p>
+    </div>
+
+    <div class="p-6 space-y-6">
+        
+        <div class="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/10 transition-all" id="terms-container">
+            <input type="checkbox" id="accept-terms" onchange="toggleRevolutButton()" 
+                   class="w-5 h-5 mt-1 cursor-pointer accent-yellow-500 rounded border-slate-700 bg-slate-800">
+            <label for="accept-terms" class="text-[10px] text-slate-300 uppercase font-bold cursor-pointer select-none leading-tight">
+                Akceptuję pełny <button onclick="showPage('legal')" class="text-yellow-500 underline hover:text-yellow-400">regulamin serwisu</button>, 
+                potwierdzam dobrowolność darowizny (Art. 888 KC) i rozumiem zasady weryfikacji ręcznej.
+            </label>
+        </div>
+
+        <div id="revolut-content" class="opacity-30 pointer-events-none transition-opacity duration-300">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="bg-yellow-500 text-slate-900 w-6 h-6 rounded-full flex items-center justify-center font-black text-xs not-italic">1</span>
+                <p class="text-yellow-500 font-black uppercase text-xs">Darowizna Revolut</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=DAROWIZNA%20KOD%20(WPISZ%20SWOJ%20TEL)" 
+                   target="_blank" 
+                   class="flex flex-col items-center justify-center p-4 bg-blue-600/20 border border-blue-500/30 rounded-2xl hover:bg-blue-600/40 transition group">
+                    <span class="text-white font-bold text-sm mb-1">Kliknij w link</span>
+                    <span class="text-[9px] text-blue-300 uppercase text-center font-black">Link Revolut.me</span>
+                </a>
+
+                <div class="flex flex-col items-center justify-center p-4 bg-white/5 border border-white/10 rounded-2xl">
+                    <span class="text-slate-400 text-[9px] uppercase mb-1">Przelew na numer:</span>
+                    <span class="text-white font-black text-lg">786 259 909</span>
+                </div>
+            </div>
+
+            <div class="bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-2xl mt-4">
+                <p class="text-[10px] text-yellow-500 font-black uppercase mb-1 text-center">W tytule wpisz koniecznie:</p>
+                <p class="text-white text-center font-black text-sm uppercase tracking-wide">DAROWIZNA KOD [TWÓJ NUMER TEL]</p>
+            </div>
+        </div>
+
+        <div class="bg-red-500/10 border border-red-500/20 p-3 rounded-xl">
+            <p class="text-[9px] text-red-400 text-center font-bold uppercase">
+                ⚠️ Wpłaty bez numeru tel w notatce będą zwracane automatycznie.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleRevolutButton() {
+        const checkbox = document.getElementById('accept-terms');
+        const content = document.getElementById('revolut-content');
+        
+        if (checkbox.checked) {
+            content.classList.remove('opacity-30', 'pointer-events-none');
+        } else {
+            content.classList.add('opacity-30', 'pointer-events-none');
+        }
+    }
+</script>
+
                 </div>
                 <button onclick="showPage('home')" class="mt-8 w-full text-slate-600 uppercase font-black text-[10px]">Wróć do giełdy</button>
             </div>
@@ -209,48 +261,131 @@
                     <div class="bg-yellow-500/5 p-4 rounded-xl border border-yellow-500/20 mt-6 italic">
                         <div class="flex items-center gap-3 text-[10px] text-slate-300 font-bold uppercase">
                             <input type="checkbox" id="f-reg" class="w-5 h-5 accent-yellow-500">
-                            <label for="f-reg">Akceptuję regulamin i przekazuję darowiznę 30 zł Revolut na utrzymanie serwisu (Art. 888 KC)
-                            ​​⚡ INFORMACJE PRAWNE I ZASADY DAROWIZNY
-​1. CAŁKOWITY BRAK ODPOWIEDZIALNOŚCI ZA WYKONAWCÓW
-Administrator serwisu nie bierze żadnej odpowiedzialności za rzetelność, jakość wykonanych prac, terminowość ani kulturę osobistą osób kontaktujących się w sprawie ogłoszenia. Nie jesteśmy stroną w umowie między Zlecającym a Wykonawcą. Wszelkie roszczenia, spory finansowe lub reklamacje muszą być kierowane bezpośrednio do wykonawcy. Korzystasz z serwisu na własne ryzyko.
-​2. WERYFIKACJA UPRAWNIEŃ (BEZPIECZEŃSTWO)
-Jako osoba prywatna dodająca ogłoszenie, masz bezwzględny obowiązek zażądać od elektryka okazania ważnych uprawnień SEP przed rozpoczęciem prac. Nieodpowiedzialne dopuszczenie osób bez uprawnień do instalacji grozi pożarem, porażeniem prądem oraz utratą ubezpieczenia nieruchomości.
-​3. STATUS DAROWIZNY (Art. 888 KC)
-Wpłata 30 PLN to dobrowolna darowizna na rzecz osoby fizycznej (wsparcie prywatnego projektu). Nie jesteśmy podmiotem gospodarczym i nie wystawiamy faktur. Darowizna wspiera techniczne działanie strony i jest bezzwrotna, niezależnie od tego, czy uda się znaleźć wykonawcę.
-​4. ZGODA NA PUBLIKACJĘ DANYCH
-Wysyłając SMS ze zleceniem, świadomie i dobrowolnie zgadzasz się na publiczne wyświetlenie Twojego numeru telefonu na liście ogłoszeń. Robisz to w celu umożliwienia elektrykom bezpośredniego kontaktu z Tobą. Dane usuwamy na prośbę wysłaną na: twojelektryk@hotmail.com.
-                        </div>
-                    </div>
+                            <label for="f-reg"><div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl italic shadow-xl">
+    <div class="space-y-4 mb-6">
+        <h3 class="text-yellow-500 font-black uppercase text-xs tracking-widest flex items-center gap-2">
+            <span class="animate-pulse">⚡</span> Informacje prawne i zasady
+        </h3>
+        
+        <div class="text-[9px] text-slate-400 space-y-3 leading-relaxed uppercase font-bold max-h-48 overflow-y-auto pr-2 custom-scrollbar">
+            <p><span class="text-slate-200">1. BRAK ODPOWIEDZIALNOŚCI:</span> Administrator nie odpowiada za rzetelność i jakość prac wykonawców. Nie jesteśmy stroną w umowie.</p>
+            <p><span class="text-slate-200">2. WERYFIKACJA UPRAWNIEŃ:</span> Masz obowiązek sprawdzić uprawnienia SEP elektryka przed dopuszczeniem do prac.</p>
+            <p><span class="text-slate-200">3. STATUS DAROWIZNY:</span> Wpłata 30 PLN to dobrowolna darowizna (Art. 888 KC) na wsparcie projektu. Brak faktur VAT.</p>
+            <p><span class="text-slate-200">4. ZGODA NA PUBLIKACJĘ:</span> Wysyłając zlecenie, zgadzasz się na upublicznienie numeru tel. na liście ogłoszeń.</p>
+        </div>
+    </div>
 
-                    <div class="bg-black/40 p-5 rounded-xl border border-slate-800">
-                        <p class="text-[10px] text-yellow-500 font-black mb-2 uppercase italic">Wpłać 30 zł BLIK przed wysłaniem:</p>
-                        <p class="text-2xl font-black text-white tracking-widest">786 259 909</p>
-                    </div>
+    <div class="flex items-start gap-3 p-4 bg-white/5 rounded-2xl border border-white/10 hover:border-yellow-500/30 transition-colors cursor-pointer group">
+        <input type="checkbox" id="check-fucha" 
+               class="w-5 h-5 mt-1 cursor-pointer accent-yellow-500 rounded border-slate-700 bg-slate-800">
+        <label for="check-fucha" class="text-[10px] text-slate-300 uppercase font-black cursor-pointer select-none leading-tight">
+            Akceptuję powyższe zasady oraz <button onclick="showPage('legal')" class="text-yellow-500 underline hover:text-yellow-400 focus:outline-none">pełny regulamin serwisu</button> i przekazuję darowiznę 30 zł Revolut na utrzymanie giełdy.
+        </label>
+    </div>
+</div>
 
-                    <button onclick="submitBySms()" class="w-full bg-yellow-500 text-slate-900 font-black py-5 rounded-xl uppercase italic shadow-lg hover:bg-yellow-400 transition mt-4">Wyślij Zlecenie przez SMS</button>
-                    <p class="text-center text-[9px] text-slate-600 uppercase font-bold mt-3">Ogłoszenie pojawi się po weryfikacji darowizny.</p>
-                </div>
+<style>
+    /* Opcjonalne: ładniejszy pasek przewijania dla tekstu prawnego */
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #eab308; border-radius: 10px; }
+</style>
+
+                    </div>
+<div class="border-t border-slate-800 pt-4 mt-4">
+    <p class="text-[10px] text-yellow-500 font-black mb-2 uppercase">KROK 1: Opłać ogłoszenie</p>
+    <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=DAROWIZNA%20OGLOSZENIE" 
+       target="_blank" 
+       class="inline-block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-bold text-xs uppercase hover:bg-blue-500">
+       WPŁAĆ 30 PLN (REVOLUT)
+    </a>
+    <p class="text-[9px] text-slate-500 mt-2 italic">Po dokonaniu wpłaty wróć tutaj i kliknij przycisk poniżej, aby wysłać treść ogłoszenia SMSem.</p>
+</div>
+
+<div class="mt-4">
+    <p class="text-[10px] text-yellow-500 font-black mb-2 uppercase">KROK 2: Wyślij treść do publikacji</p>
+    <button onclick="sendFuchaSMS()" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold text-xs uppercase">
+       WYŚLIJ OGŁOSZENIE (SMS)
+    </button>
+</div>
+
             </div>
         </section>
 
         <section id="prices" class="hidden max-w-4xl mx-auto">
-            <h2 class="text-3xl font-black text-yellow-500 uppercase italic text-center mb-10 italic">Orientacyjny Cennik 2026</h2>
-            <div class="grid md:grid-cols-2 gap-6 italic">
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                    <h3 class="text-blue-400 font-black uppercase text-xs mb-4">Instalacje</h3>
-                    <div class="space-y-3 text-[11px] font-bold uppercase">
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Punkt elektryczny</span><span class="text-white">140-220 zł</span></div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Montaż Rozdzielnicy</span><span class="text-white">od 800 zł</span></div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Podłączenie AGD</span><span class="text-white">150-250 zł</span></div>
-                    </div>
-                </div>
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                    <h3 class="text-blue-400 font-black uppercase text-xs mb-4">Inne</h3>
-                    <div class="space-y-3 text-[11px] font-bold uppercase">
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Pogotowie 24h</span><span class="text-white">od 350 zł</span></div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Pomiary (1 pkt)</span><span class="text-white">20-40 zł</span></div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Wymiana licznika</span><span class="text-white">250-400 zł</span></div>
-                    </div>
+            <div class="max-w-4xl mx-auto p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl italic">
+    <div class="text-center mb-8">
+        <h2 class="text-white font-black uppercase text-2xl tracking-tighter italic">Orientacyjny Cennik Usług 2026</h2>
+        <p class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest mt-2">Uśrednione stawki rynkowe - woj. mazowieckie / ogólnopolskie</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-4">
+            <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Instalacje i Montaż</h3>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Punkt elektryczny (podejście)</span>
+                <span class="text-white">140 - 220 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Montaż rozdzielnicy (robocizna)</span>
+                <span class="text-white">od 800 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Podłączenie AGD (z wpisem do gwarancji)</span>
+                <span class="text-white">150 - 250 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Montaż osprzętu (gniazdko/łącznik)</span>
+                <span class="text-white">25 - 45 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Montaż lampy/żyrandola</span>
+                <span class="text-white">80 - 200 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Układanie przewodu (mb)</span>
+                <span class="text-white">8 - 15 zł</span>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Serwis, Pomiary, Inne</h3>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Pogotowie lokatorskie 24h</span>
+                <span class="text-white">od 350 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Pomiary elektryczne (za 1 pkt)</span>
+                <span class="text-white">20 - 45 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Wymiana licznika / WLZ</span>
+                <span class="text-white">250 - 500 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Lokalizacja usterki (diagnoza)</span>
+                <span class="text-white">150 - 300 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Przegląd instalacji (roczny)</span>
+                <span class="text-white">od 400 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Bruzdownie w betonie (mb)</span>
+                <span class="text-white">40 - 70 zł</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-10 p-4 bg-black/50 border-l-2 border-yellow-500 rounded-r-xl">
+        <p class="text-[9px] text-slate-400 leading-relaxed uppercase font-bold">
+            <span class="text-yellow-500">INFORMACJA PRAWNA:</span> Powyższe zestawienie cen ma charakter wyłącznie poglądowy i informacyjny. 
+            Ceny stanowią średnią stawek rynkowych zbieranych z ogólnodostępnych ofert w sieci i nie stanowią oferty handlowej w rozumieniu 
+            Art. 66 par. 1 Kodeksu Cywilnego. Każdy wykonawca na portalu ustala ceny indywidualnie w zależności od stopnia trudności prac, 
+            użytych materiałów oraz lokalizacji. Serwis nie ponosi odpowiedzialności za różnice w wycenach między użytkownikami.
+        </p>
+    </div>
+</div>
                 </div>
             </div>
         </section>
