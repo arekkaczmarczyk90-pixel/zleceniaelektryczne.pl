@@ -1,5 +1,4 @@
-                                
-            <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -249,40 +248,74 @@
                 <button onclick="showPage('home')" class="mt-8 w-full text-slate-600 uppercase font-black text-[10px]">Wróć do giełdy</button>
             </div>
         </section>
-
-        <section id="add" class="hidden max-w-2xl mx-auto py-10">
-            <div class="bg-slate-900 p-8 rounded-3xl border border-yellow-500 shadow-2xl">
-                <h3 class="text-2xl font-black text-yellow-500 text-center uppercase mb-8 italic text-glow">Dodaj Zlecenie przez SMS</h3>
-                
-                <div class="space-y-4">
-                    <input type="text" id="f-city" placeholder="MIASTO (NP. POZNAŃ)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic">
-                    <textarea id="f-desc" placeholder="CO JEST DO ZROBIENIA? (NP. PODŁĄCZENIE KUCHNI)" class="w-full p-4 rounded-xl text-sm italic h-24"></textarea>
-                    <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON DLA ELEKTRYKA" class="w-full p-4 rounded-xl font-bold text-sm italic">
-                    
-                    <div class="bg-yellow-500/5 p-4 rounded-xl border border-yellow-500/20 mt-6 italic">
-                        <div class="flex items-center gap-3 text-[10px] text-slate-300 font-bold uppercase">
-                            <input type="checkbox" id="f-reg" class="w-5 h-5 accent-yellow-500">
-                            <label for="f-reg"><div class="bg-slate-900 border border-slate-800 p-6 rounded-3xl italic shadow-xl">
-    <div class="space-y-4 mb-6">
-        <h3 class="text-yellow-500 font-black uppercase text-xs tracking-widest flex items-center gap-2">
-            <span class="animate-pulse">⚡</span> Informacje prawne i zasady
-        </h3>
+<section id="add" class="hidden max-w-2xl mx-auto py-10">
+    <div class="bg-slate-900 p-8 rounded-3xl border border-yellow-500 shadow-2xl">
+        <h3 class="text-2xl font-black text-yellow-500 text-center uppercase mb-8 italic text-glow">Dodaj Zlecenie przez SMS</h3>
         
-        <div class="text-[9px] text-slate-400 space-y-3 leading-relaxed uppercase font-bold max-h-48 overflow-y-auto pr-2 custom-scrollbar">
-            <p><span class="text-slate-200">1. BRAK ODPOWIEDZIALNOŚCI:</span> Administrator nie odpowiada za rzetelność i jakość prac wykonawców. Nie jesteśmy stroną w umowie.</p>
-            <p><span class="text-slate-200">2. WERYFIKACJA UPRAWNIEŃ:</span> Masz obowiązek sprawdzić uprawnienia SEP elektryka przed dopuszczeniem do prac.</p>
-            <p><span class="text-slate-200">3. STATUS DAROWIZNY:</span> Wpłata 30 PLN to dobrowolna darowizna (Art. 888 KC) na wsparcie projektu. Brak faktur VAT.</p>
-            <p><span class="text-slate-200">4. ZGODA NA PUBLIKACJĘ:</span> Wysyłając zlecenie, zgadzasz się na upublicznienie numeru tel. na liście ogłoszeń.</p>
+        <div class="space-y-4">
+            <input type="text" id="f-city" placeholder="MIASTO (NP. POZNAŃ)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic bg-slate-800 text-white border border-slate-700">
+            <textarea id="f-desc" placeholder="CO JEST DO ZROBIENIA? (NP. PODŁĄCZENIE KUCHNI)" class="w-full p-4 rounded-xl text-sm italic h-24 bg-slate-800 text-white border border-slate-700"></textarea>
+            <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON DLA ELEKTRYKA" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
+            
+            <div class="bg-black/40 p-6 rounded-3xl border border-slate-800 italic mt-6">
+                <h4 class="text-yellow-500 font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
+                    <span class="animate-pulse">⚡</span> Informacje prawne i zasady
+                </h4>
+                
+                <div class="text-[9px] text-slate-400 space-y-3 leading-relaxed uppercase font-bold max-h-40 overflow-y-auto pr-2 mb-6 border-b border-slate-800 pb-4">
+                    <p><span class="text-slate-200">1. BRAK ODPOWIEDZIALNOŚCI:</span> Administrator nie odpowiada za rzetelność i jakość prac wykonawców.</p>
+                    <p><span class="text-slate-200">2. WERYFIKACJA UPRAWNIEŃ:</span> Masz obowiązek sprawdzić uprawnienia SEP elektryka.</p>
+                    <p><span class="text-slate-200">3. STATUS DAROWIZNY:</span> Wpłata 30 PLN to dobrowolna darowizna (Art. 888 KC).</p>
+                    <p><span class="text-slate-200">4. ZGODA NA PUBLIKACJĘ:</span> Zgadzasz się na upublicznienie numeru tel. w ogłoszeniu.</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                    <input type="checkbox" id="f-reg" class="w-6 h-6 mt-1 cursor-pointer accent-yellow-500 shrink-0">
+                    <label for="f-reg" class="text-[10px] text-slate-300 uppercase font-black cursor-pointer select-none leading-tight">
+                        Akceptuję powyższe zasady oraz <button type="button" onclick="showPage('legal')" class="text-yellow-500 underline">pełny regulamin</button> i przekazuję 30 zł darowizny przez Revolut.
+                    </label>
+                </div>
+            </div>
+
+            <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=DAROWIZNA%20OGLOSZENIE" 
+               target="_blank" 
+               class="block w-full bg-blue-600 text-white text-center py-4 rounded-xl font-black uppercase text-xs hover:bg-blue-500 transition shadow-lg">
+                1. WPŁAĆ 30 PLN (REVOLUT)
+            </a>
+
+            <button onclick="sendFuchaSMS()" class="w-full bg-yellow-500 text-slate-900 py-4 rounded-xl font-black uppercase text-xs hover:bg-yellow-400 transition-all active:scale-95 shadow-[0_0_20px_rgba(234,179,8,0.3)]">
+                2. WYŚLIJ OGŁOSZENIE (SMS)
+            </button>
         </div>
     </div>
+</section>
 
-    <div class="flex items-start gap-3 p-4 bg-white/5 rounded-2xl border border-white/10 hover:border-yellow-500/30 transition-colors cursor-pointer group">
-        <input type="checkbox" id="check-fucha" 
-               class="w-5 h-5 mt-1 cursor-pointer accent-yellow-500 rounded border-slate-700 bg-slate-800">
-        <label for="check-fucha" class="text-[10px] text-slate-300 uppercase font-black cursor-pointer select-none leading-tight">
-            Akceptuję powyższe zasady oraz <button onclick="showPage('legal')" class="text-yellow-500 underline hover:text-yellow-400 focus:outline-none">pełny regulamin serwisu</button> i przekazuję darowiznę 30 zł Revolut na utrzymanie giełdy.
-        </label>
-    </div>
+<script>
+function sendFuchaSMS() {
+    const city = document.getElementById('f-city').value;
+    const desc = document.getElementById('f-desc').value;
+    const tel = document.getElementById('f-tel').value;
+    const accepted = document.getElementById('f-reg').checked;
+
+    if (!city || !desc || !tel) {
+        alert("Wypełnij wszystkie pola ogłoszenia!");
+        return;
+    }
+
+    if (!accepted) {
+        alert("Musisz zaakceptować regulamin!");
+        return;
+    }
+
+    // Tworzenie treści SMS
+    const message = `VOLT: MIASTO: ${city}. ZLECENIE: ${desc}. TEL: ${tel}. (DAROWIZNA REVOLUT POSZŁA)`;
+    
+    // Przekierowanie do aplikacji SMS
+    window.location.href = `sms:+48786259909?body=${encodeURIComponent(message)}`;
+}
+</script>
+
+   
 </div>
 
 <style>
@@ -292,26 +325,7 @@
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #eab308; border-radius: 10px; }
 </style>
 
-                    </div>
-<div class="border-t border-slate-800 pt-4 mt-4">
-    <p class="text-[10px] text-yellow-500 font-black mb-2 uppercase">KROK 1: Opłać ogłoszenie</p>
-    <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=DAROWIZNA%20OGLOSZENIE" 
-       target="_blank" 
-       class="inline-block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-bold text-xs uppercase hover:bg-blue-500">
-       WPŁAĆ 30 PLN (REVOLUT)
-    </a>
-    <p class="text-[9px] text-slate-500 mt-2 italic">Po dokonaniu wpłaty wróć tutaj i kliknij przycisk poniżej, aby wysłać treść ogłoszenia SMSem.</p>
-</div>
-
-<div class="mt-4">
-    <p class="text-[10px] text-yellow-500 font-black mb-2 uppercase">KROK 2: Wyślij treść do publikacji</p>
-    <button onclick="sendFuchaSMS()" class="w-full bg-green-600 text-white py-3 rounded-lg font-bold text-xs uppercase">
-       WYŚLIJ OGŁOSZENIE (SMS)
-    </button>
-</div>
-
-            </div>
-        </section>
+ 
 
         <section id="prices" class="hidden max-w-4xl mx-auto">
             <div class="max-w-4xl mx-auto p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl italic">
