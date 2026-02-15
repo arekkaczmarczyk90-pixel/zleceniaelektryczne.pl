@@ -96,7 +96,7 @@
                 <button onclick="showPage('home')" class="hover:text-yellow-500 transition">Giełda</button>
                 <button onclick="showPage('prices')" class="hover:text-yellow-500 transition">Cennik</button>
                 <button onclick="showPage('contact')" class="hover:text-yellow-500 transition">Kontakt</button>
-                <button onclick="showPage('add')" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-full hover:bg-yellow-400 transition">Dodaj Fuchę</button>
+                <button onclick="showPage('add')" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-full hover:bg-yellow-400 transition">Dodaj zlecenie</button>
             </nav>
             <button class="md:hidden text-yellow-500 text-2xl" onclick="showPage('add')"><i class="fa fa-plus-circle"></i></button>
         </div>
@@ -173,6 +173,56 @@
                     </div>
                 </div>
             </div>
+            <style>
+    .neon-blue { border: 1px solid #1e293b; transition: all 0.4s; }
+    .neon-blue:hover { box-shadow: 0 0 30px #3b82f6; border-color: #3b82f6; transform: translateY(-5px); }
+    .neon-yellow { border: 1px solid #1e293b; transition: all 0.4s; }
+    .neon-yellow:hover { box-shadow: 0 0 30px #eab308; border-color: #eab308; transform: translateY(-5px); }
+    .neon-red { border: 2px dashed rgba(239, 68, 68, 0.2); transition: all 0.4s; }
+    .neon-red:hover { box-shadow: 0 0 30px #ef4444; border-color: #ef4444; transform: translateY(-5px); }
+</style>
+
+<section class="container mx-auto px-4 py-16">
+    <div class="flex items-center gap-4 mb-10">
+        <div class="h-[1px] bg-slate-800 flex-grow"></div>
+        <h3 class="text-xs font-black uppercase italic text-slate-500 tracking-[0.3em]">Nasi Partnerzy</h3>
+        <div class="h-[1px] bg-slate-800 flex-grow"></div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div onclick="openCompany('freenet')" class="cursor-pointer neon-blue bg-slate-900 p-6 rounded-2xl text-center group relative overflow-hidden">
+            <div class="absolute top-2 right-2 bg-blue-500 text-white text-[7px] font-black px-1 rounded uppercase tracking-tighter shadow-sm">Zaufany</div>
+            <div class="w-16 h-16 bg-blue-600/10 rounded-full mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition duration-500">
+                <i class="fa fa-wifi text-3xl text-blue-500"></i>
+            </div>
+            <h5 class="text-[11px] font-black uppercase italic text-blue-400">FREENET</h5>
+            <p class="text-[8px] text-slate-500 mb-2 uppercase italic font-bold">Internet i Serwis</p>
+            <div class="text-yellow-500 text-[8px]"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+        </div>
+
+        <div onclick="openCompany('volt')" class="cursor-pointer neon-yellow bg-slate-900 p-6 rounded-2xl text-center group">
+            <div class="w-16 h-16 bg-yellow-600/10 rounded-full mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition duration-500">
+                <i class="fa fa-bolt text-3xl text-yellow-500"></i>
+            </div>
+            <h5 class="text-[11px] font-black uppercase italic text-yellow-500">Volt-Instal PRO</h5>
+            <p class="text-[8px] text-slate-500 mb-2 uppercase italic font-bold">Elektryka Warszawa</p>
+            <div class="text-yellow-500 text-[8px]"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+        </div>
+
+        <div onclick="showPage('add')" class="cursor-pointer neon-red bg-slate-950 p-6 rounded-2xl border-2 border-dashed border-red-500/20 text-center group">
+            <i class="fa fa-plus-circle text-2xl text-red-600 mb-3 group-hover:rotate-90 transition block"></i>
+            <h5 class="text-[9px] font-black uppercase text-red-500 italic">DODAJ SWOJĄ FIRMĘ</h5>
+            <p class="text-[7px] text-slate-500 mt-1 font-bold">1000 PLN / ROK</p>
+        </div>
+
+        <div onclick="showPage('add')" class="cursor-pointer neon-red bg-slate-950 p-6 rounded-2xl border-2 border-dashed border-red-500/20 text-center group">
+            <i class="fa fa-plus-circle text-2xl text-red-600 mb-3 group-hover:rotate-90 transition block"></i>
+            <h5 class="text-[9px] font-black uppercase text-red-500 italic">DODAJ SWOJĄ FIRMĘ</h5>
+            <p class="text-[7px] text-slate-500 mt-1 font-bold">1000 PLN / ROK</p>
+        </div>
+    </div>
+</section>
+
         </section>
 
         <section id="sms-get-code" class="hidden max-w-xl mx-auto py-10">
@@ -308,7 +358,7 @@ function sendFuchaSMS() {
     const message = `VOLT: MIASTO: ${city}. ZLECENIE: ${desc}. TEL: ${tel}. (DAROWIZNA REVOLUT POSZŁA)`;
     
     // Przekierowanie do aplikacji SMS
-    window.location.href = `sms:+48786259909?body=${encodeURIComponent(message)}`;
+    window.location.href = `sms:+48503784812?body=${encodeURIComponent(message)}`;
 }
 </script>
 
@@ -408,7 +458,7 @@ function sendFuchaSMS() {
                 Masz pytania dotyczące ogłoszeń? <br>
                 Zgubiłeś kod dostępu? <br>
                 <span class="text-white block mt-4 text-xl">twojelektryk@hotmail.com</span>
-                <span class="text-blue-400 block mt-2">Tel: 503- (SMS)</span>
+                <span class="text-blue-400 block mt-2">Tel: Wkrótce</span>
             </p>
         </section>
 
