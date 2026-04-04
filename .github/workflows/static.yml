@@ -1,9 +1,12 @@
+ 
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Giełda zleceń elektrycznych – dodaj zlecenie dla elektryka lub znajdź wykonawcę z Twojej okolicy. Wymiana kontaktów, instalacje, naprawy i inne prace elektryczne.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VOLT ZLECENIA | Prywatna Giełda dla Elektryków</title>
+    <title> ZLECENIA ELEKTRYCZE| Prywatna Giełda dla Elektryków</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -89,14 +92,16 @@
     <header class="bg-slate-900/95 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
-                <div class="bg-yellow-500 text-slate-900 p-2 rounded-lg font-black text-xl italic">VZ</div>
-                <span class="text-xl font-black tracking-tighter uppercase italic">Volt<span class="text-yellow-500"> Zlecenia</span></span>
-            </div>Dodaj Zlecenie
+                <div class="bg-yellow-500 text-slate-900 p-2 rounded-lg font-black text-xl italic"><div class="bg-yellow-500 text-slate-900 w-10 h-10 rounded-lg flex items-center justify-center shadow-[0_0_15px_#eab308]">
+        <i class="fa fa-bolt text-2xl animate-pulse"></i>
+    </div></div>
+                <span class="text-xl font-black tracking-tighter uppercase italic">Zlecenia<span class="text-yellow-500">Elektryczne</span></span>
+            </div>
             <nav class="hidden md:flex space-x-6 text-xs font-bold uppercase italic">
                 <button onclick="showPage('home')" class="hover:text-yellow-500 transition">Giełda</button>
                 <button onclick="showPage('prices')" class="hover:text-yellow-500 transition">Cennik</button>
                 <button onclick="showPage('contact')" class="hover:text-yellow-500 transition">Kontakt</button>
-                <button onclick="showPage('add')" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-full hover:bg-yellow-400 transition">Dodaj Fuchę</button>
+                <button onclick="showPage('add')" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-full hover:bg-yellow-400 transition">Dodaj zlecenie</button>
             </nav>
             <button class="md:hidden text-yellow-500 text-2xl" onclick="showPage('add')"><i class="fa fa-plus-circle"></i></button>
         </div>
@@ -111,6 +116,32 @@
     </section>
 
     <main class="container mx-auto px-4 py-8">
+<section id="premium-form" class="hidden max-w-2xl mx-auto py-10">
+    <div class="bg-slate-900 p-8 rounded-3xl border border-red-500 shadow-2xl">
+        <h3 class="text-xl font-black text-red-500 text-center uppercase mb-6 italic">Dodaj swoją firmę</h3>
+        
+        <div class="space-y-4">
+            <input type="text" id="p-nip" placeholder="NIP FIRMY" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
+            <input type="text" id="p-name" placeholder="NAZWA FIRMY" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
+            <select id="p-type" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
+                <option value="Elektryka">ELEKTRYKA</option>
+                <option value="Teletechnika">TELETECHNIKA</option>
+            </select>
+            <input type="tel" id="p-tel" placeholder="TELEFON" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
+            <textarea id="p-desc" placeholder="KRÓTKI OPIS" class="w-full p-4 rounded-xl text-sm italic h-24 bg-slate-800 text-white border border-slate-700"></textarea>
+            
+            <p class="text-[9px] text-slate-500 uppercase font-black italic text-center">
+                Kliknięcie przycisku otworzy Revolut oraz przygotuje wiadomość e-mail z danymi.
+            </p>
+
+            <button onclick="sendPartnerRequest()" class="w-full bg-red-600 text-white py-4 rounded-xl font-black uppercase text-xs shadow-lg hover:bg-red-500 transition">
+                WYŚLIJ I WESPRZYJ (1000 PLN / ROK)
+            </button>
+            
+            <button onclick="showPage('home')" class="w-full text-slate-600 text-[10px] font-black uppercase underline">Anuluj</button>
+        </div>
+    </div>
+</section>
 
         <section id="home">
             <div class="flex flex-wrap gap-2 mb-8 justify-center">
@@ -120,137 +151,367 @@
                 <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Poznań</span>
                 <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Gdańsk</span>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="card-glow p-6 rounded-2xl border border-slate-800">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-yellow-500 font-black italic text-xs uppercase tracking-tighter">Zlecenie #VZ-881</span>
-                        <span class="text-slate-500 text-[9px] font-bold">2 GODZ. TEMU</span>
-                    </div>
-                    <h3 class="text-lg font-black uppercase italic mb-1">Montaż Rozdzielnicy</h3>
-                    <p class="text-blue-400 text-[10px] font-bold uppercase mb-4"><i class="fa fa-map-marker-alt mr-1"></i> Warszawa (Ursynów)</p>
-                    <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">Dom jednorodzinny, montaż nowej rozdzielnicy 3-rzędowej + opisy.</p>
-                    <div class="border-t border-slate-800 pt-4" id="box-1">
-                        <button onclick="showPage('sms-get-code')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl font-black text-[10px] uppercase italic transition mb-3">Odblokuj numer (Darowizna 30 zł)</button>
-                        <div class="flex gap-2">
-                            <input type="text" id="code-1" class="w-full text-center p-2 rounded-lg font-black" placeholder="WPISZ KOD">
-                            <button onclick="unlockAd('1', '786 259 909')" class="bg-green-600 px-4 rounded-lg font-black">OK</button>
-                        </div>
                     </div>
                 </div>
 
-                <div class="card-glow p-6 rounded-2xl border border-slate-800">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-yellow-500 font-black italic text-xs uppercase tracking-tighter">Zlecenie #VZ-882</span>
-                        <span class="text-slate-500 text-[9px] font-bold">5 GODZ. TEMU</span>
-                    </div>
-                    <h3 class="text-lg font-black uppercase italic mb-1">Płyta Indukcyjna</h3>
-                    <p class="text-blue-400 text-[10px] font-bold uppercase mb-4"><i class="fa fa-map-marker-alt mr-1"></i> Kraków (Centrum)</p>
-                    <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">Podłączenie nowej płyty indukcyjnej wraz z wpisem do karty gwarancyjnej.</p>
-                    <div class="border-t border-slate-800 pt-4" id="box-2">
-                        <button onclick="showPage('sms-get-code')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl font-black text-[10px] uppercase italic transition mb-3">Odblokuj numer (Darowizna 30 zł)</button>
-                        <div class="flex gap-2">
-                            <input type="text" id="code-2" class="w-full text-center p-2 rounded-lg font-black" placeholder="WPISZ KOD">
-                            <button onclick="unlockAd('2', '605 123 456')" class="bg-green-600 px-4 rounded-lg font-black">OK</button>
-                        </div>
-                    </div>
-                </div>
+               <div class="card-glow p-6 rounded-2xl border border-slate-800">
+    <div class="flex justify-between items-center mb-4">
+        <span class="text-yellow-500 font-black italic text-xs uppercase tracking-tighter">Zlecenie #VZ-883</span>
+        <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">AKTYWNE</span>
+    </div>
+    <h3 class="text-lg font-black uppercase italic mb-1">Awaria - brak prądu</h3>
+    <p class="text-blue-400 text-[10px] font-bold uppercase mb-4"><i class="fa fa-map-marker-alt mr-1"></i> Wrocław (Krzyki)</p>
+    <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">Wyrzuca różnicówkę przy próbie włączenia światła w kuchni. Pilne.</p>
+    
+    <div id="box-3">
+        <button onclick="unlockContact('3', 'Nieaktualne')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-black text-[10px] uppercase italic transition shadow-lg">
+            Odblokuj numer (Wsparcie serwisu)
+        </button>
+    </div>
+</div>
 
-                <div class="card-glow p-6 rounded-2xl border border-slate-800">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-yellow-500 font-black italic text-xs uppercase tracking-tighter">Zlecenie #VZ-883</span>
-                        <span class="text-slate-500 text-[9px] font-bold">DZISIAJ</span>
-                    </div>
-                    <h3 class="text-lg font-black uppercase italic mb-1">Awaria - brak prądu</h3>
-                    <p class="text-blue-400 text-[10px] font-bold uppercase mb-4"><i class="fa fa-map-marker-alt mr-1"></i> Wrocław (Krzyki)</p>
-                    <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">Wyrzuca różnicówkę przy próbie włączenia światła w kuchni. Pilne.</p>
-                    <div class="border-t border-slate-800 pt-4" id="box-3">
-                        <button onclick="showPage('sms-get-code')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-3 rounded-xl font-black text-[10px] uppercase italic transition mb-3">Odblokuj numer (Darowizna 30 zł)</button>
-                        <div class="flex gap-2">
-                            <input type="text" id="code-3" class="w-full text-center p-2 rounded-lg font-black" placeholder="WPISZ KOD">
-                            <button onclick="unlockAd('3', '512 999 000')" class="bg-green-600 px-4 rounded-lg font-black">OK</button>
-                        </div>
                     </div>
                 </div>
             </div>
+        
+            <style>
+    .neon-blue { border: 1px solid #1e293b; transition: all 0.4s; }
+    .neon-blue:hover { box-shadow: 0 0 30px #3b82f6; border-color: #3b82f6; transform: translateY(-5px); }
+    .neon-yellow { border: 1px solid #1e293b; transition: all 0.4s; }
+    .neon-yellow:hover { box-shadow: 0 0 30px #eab308; border-color: #eab308; transform: translateY(-5px); }
+    .neon-red { border: 2px dashed rgba(239, 68, 68, 0.2); transition: all 0.4s; }
+    .neon-red:hover { box-shadow: 0 0 30px #ef4444; border-color: #ef4444; transform: translateY(-5px); }
+</style>
+
+<section class="container mx-auto px-4 py-16">
+    <div class="flex items-center gap-4 mb-10">
+        <div class="h-[1px] bg-slate-800 flex-grow"></div>
+        <h3 class="text-xs font-black uppercase italic text-slate-500 tracking-[0.3em]">Nasi Partnerzy</h3>
+        <div class="h-[1px] bg-slate-800 flex-grow"></div>
+    </div>
+
+    <div class="cursor-pointer neon-blue bg-slate-900 p-6 rounded-2xl text-center group relative overflow-hidden h-[200px] flex flex-col justify-center">
+    <div class="absolute top-2 right-2 bg-blue-500 text-white text-[7px] font-black px-1 rounded uppercase tracking-tighter shadow-sm z-10">Zaufany</div>
+    
+    <div class="transition-all duration-500 group-hover:opacity-0 group-hover:scale-50">
+        <div class="w-16 h-16 bg-blue-600/10 rounded-full mx-auto mb-4 flex items-center justify-center">
+            <i class="fa fa-wifi text-3xl text-blue-500"></i>
+        </div>
+        <h5 class="text-[11px] font-black uppercase italic text-blue-400">FREENET</h5>
+        <p class="text-[8px] text-slate-500 mb-2 uppercase italic font-bold">Jastrzębie-Zdrój</p>
+        <div class="text-yellow-500 text-[8px]"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div>
+    </div>
+
+    <div class="absolute inset-0 p-4 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-10 group-hover:translate-y-0 bg-slate-900 border-2 border-blue-500/50 rounded-2xl">
+        <h5 class="text-[10px] font-black uppercase text-blue-400 mb-1">FREENET</h5>
+        <p class="text-white text-[9px] font-bold uppercase mb-2">
+            <i class="fa fa-map-marker-alt text-blue-500 mr-1"></i> ul. Katowicka 33, Jastrzębie
+        </p>
+        <p class="text-slate-400 text-[8px] italic leading-tight mb-3 uppercase font-bold">
+            Internet radiowy, Serwis Komputerowy i profesjonalna pomoc techniczna.
+        </p>
+        <a href="tel:+48790647236" class="bg-blue-600 text-white text-[10px] font-black py-2 px-6 rounded-lg uppercase hover:bg-blue-500 transition shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+            <i class="fa fa-phone-alt mr-1"></i> 790 647 236
+        </a>
+    </div>
+</div>
+
+
+        <div onclick="openCompany('volt')" class="cursor-pointer neon-yellow bg-slate-900 p-6 rounded-2xl text-center group">
+            <div class="w-16 h-16 bg-yellow-600/10 rounded-full mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition duration-500">
+                <i class="fa fa-bolt text-3xl text-yellow-500"></i>
+            </div>
+            <h5 class="text-[11px] font-black uppercase italic text-yellow-500">Volt-Instal PRO</h5>
+            <p class="text-[8px] text-slate-500 mb-2 uppercase italic font-bold">Elektryka Warszawa</p>
+            <div class="text-yellow-500 text-[8px]"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+        </div>
+
+<div onclick="showPage('premium-form')" class="cursor-pointer neon-red bg-slate-950 p-6 rounded-2xl border-2 border-dashed border-red-500/20 text-center group transition-all hover:border-red-500">
+    <i class="fa fa-handshake text-2xl text-red-600 mb-3 group-hover:scale-110 transition block"></i>
+    <h5 class="text-[9px] font-black uppercase text-red-500 italic">ZOSTAŃ PARTNEREM</h5>
+    <p class="text-[7px] text-slate-500 mt-1 font-bold italic underline">Wsparcie serwisu na rok</p>
+</div>
+    </div>
+</section>
+ 
         </section>
 
         <section id="sms-get-code" class="hidden max-w-xl mx-auto py-10">
             <div class="bg-slate-900 p-8 rounded-3xl border border-blue-500 shadow-2xl italic">
                 <h3 class="text-2xl font-black text-blue-400 text-center uppercase mb-8 italic">Odbierz kod dostępu</h3>
                 <div class="space-y-6">
-                    <div class="p-6 bg-black/40 rounded-2xl border border-slate-800">
-                        <p class="text-[10px] text-slate-500 font-black uppercase mb-2">Krok 1: Darowizna BLIK</p>
-                        <p class="text-sm font-bold uppercase">Prześlij <span class="text-white text-xl">30 PLN</span> na numer:</p>
-                        <p class="text-3xl font-black text-white mt-1">786 259 909</p>
-                        <p class="text-[9px] text-slate-500 mt-2 uppercase">W tytule wpisz: DAROWIZNA KOD</p>
-                    </div>
-                    Dokonując wpłaty, potwierdzasz, że jest to dobrowolna darowizna na rzecz osoby fizycznej (Art. 888 KC) na pokrycie kosztów serwera. Otrzymanie kodu jest formą podziękowania za wsparcie projektu
-                    Uwaga: Jako osoba prywatna nie wystawiam faktur VAT ani rachunków. Darowizny nie podlegają odliczeniom kosztów prowadzenia działalności.
-                    Weryfikacja wpłaty odbywa się ręcznie. Kod zostanie odesłany SMS-em zazwyczaj w ciągu 24h."
-                    <div class="p-6 bg-black/40 rounded-2xl border border-slate-800">
-                        <p class="text-[10px] text-slate-500 font-black uppercase mb-4">Krok 2: Odbierz SMS</p>
-                        <a href="sms:786259909?body=PROSZE%20O%20KOD%20DOSTEPU%20(OPLACONE)" class="block w-full bg-blue-600 text-white text-center py-4 rounded-xl font-black uppercase text-sm hover:bg-blue-500 transition shadow-lg">Wyślij SMS po kod</a>
-                    </div>
+                    <div class="max-w-2xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl italic">
+    
+    <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-center">
+        <h2 class="text-white font-black uppercase tracking-tighter text-2xl">Odbierz kod dostępu</h2>
+        <p class="text-blue-100 text-[10px] uppercase font-bold mt-1">Weryfikacja ręczna: SMS w ciągu 24h</p>
+    </div>
+
+    <div class="p-6 space-y-6">
+        
+        <div class="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/10 transition-all" id="terms-container">
+            <input type="checkbox" id="accept-terms" onchange="toggleRevolutButton()" 
+                   class="w-5 h-5 mt-1 cursor-pointer accent-yellow-500 rounded border-slate-700 bg-slate-800">
+            <label for="accept-terms" class="text-[10px] text-slate-300 uppercase font-bold cursor-pointer select-none leading-tight">
+                Akceptuję pełny <button onclick="showPage('legal')" class="text-yellow-500 underline hover:text-yellow-400">regulamin serwisu</button>, 
+                potwierdzam dobrowolność darowizny (Art. 888 KC) i rozumiem zasady weryfikacji ręcznej.
+            </label>
+        </div>
+
+        <div id="revolut-content" class="opacity-30 pointer-events-none transition-opacity duration-300">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="bg-yellow-500 text-slate-900 w-6 h-6 rounded-full flex items-center justify-center font-black text-xs not-italic">1</span>
+                <p class="text-yellow-500 font-black uppercase text-xs">Darowizna Revolut</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=DAROWIZNA%20KOD%20(WPISZ%20SWOJ%20TEL)" 
+                   target="_blank" 
+                   class="flex flex-col items-center justify-center p-4 bg-blue-600/20 border border-blue-500/30 rounded-2xl hover:bg-blue-600/40 transition group">
+                    <span class="text-white font-bold text-sm mb-1">Kliknij w link</span>
+                    <span class="text-[9px] text-blue-300 uppercase text-center font-black">Link Revolut.me</span>
+                </a>
+
+                
+            </div>
+
+            <div class="bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-2xl mt-4">
+                <p class="text-[10px] text-yellow-500 font-black uppercase mb-1 text-center">W tytule wpisz koniecznie:</p>
+                <p class="text-white text-center font-black text-sm uppercase tracking-wide">DAROWIZNA KOD [TWÓJ NUMER TEL]</p>
+            </div>
+        </div>
+
+        <div class="bg-red-500/10 border border-red-500/20 p-3 rounded-xl">
+            <p class="text-[9px] text-red-400 text-center font-bold uppercase">
+                ⚠️ Wpłaty bez numeru tel w notatce będą zwracane automatycznie.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    function toggleRevolutButton() {
+        const checkbox = document.getElementById('accept-terms');
+        const content = document.getElementById('revolut-content');
+        
+        if (checkbox.checked) {
+            content.classList.remove('opacity-30', 'pointer-events-none');
+        } else {
+            content.classList.add('opacity-30', 'pointer-events-none');
+        }
+    }
+</script>
+
                 </div>
                 <button onclick="showPage('home')" class="mt-8 w-full text-slate-600 uppercase font-black text-[10px]">Wróć do giełdy</button>
             </div>
         </section>
-
-        <section id="add" class="hidden max-w-2xl mx-auto py-10">
-            <div class="bg-slate-900 p-8 rounded-3xl border border-yellow-500 shadow-2xl">
-                <h3 class="text-2xl font-black text-yellow-500 text-center uppercase mb-8 italic text-glow">Dodaj Zlecenie przez SMS</h3>
+<section id="add" class="hidden max-w-2xl mx-auto py-10">
+    <div class="bg-slate-900 p-8 rounded-3xl border border-yellow-500 shadow-2xl">
+        <h3 class="text-2xl font-black text-yellow-500 text-center uppercase mb-8 italic text-glow">Dodaj ogłoszenie przez SMS</h3>
+        
+        <div class="space-y-4">
+            <input type="text" id="f-city" placeholder="MIASTO (NP. POZNAŃ)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic bg-slate-800 text-white border border-slate-700">
+            <textarea id="f-desc" placeholder="CO JEST DO ZROBIENIA? (NP. PODŁĄCZENIE KUCHNI)" class="w-full p-4 rounded-xl text-sm italic h-24 bg-slate-800 text-white border border-slate-700"></textarea>
+            <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON DLA ELEKTRYKA" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
+            
+            <div class="bg-blue-950/20 p-6 rounded-3xl border border-blue-500/20 italic mt-6">
+                <h4 class="text-blue-400 font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
+                    <i class="fa fa-heart animate-pulse"></i> Wsparcie społeczności
+                </h4>
                 
-                <div class="space-y-4">
-                    <input type="text" id="f-city" placeholder="MIASTO (NP. POZNAŃ)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic">
-                    <textarea id="f-desc" placeholder="CO JEST DO ZROBIENIA? (NP. PODŁĄCZENIE KUCHNI)" class="w-full p-4 rounded-xl text-sm italic h-24"></textarea>
-                    <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON DLA ELEKTRYKA" class="w-full p-4 rounded-xl font-bold text-sm italic">
-                    
-                    <div class="bg-yellow-500/5 p-4 rounded-xl border border-yellow-500/20 mt-6 italic">
-                        <div class="flex items-center gap-3 text-[10px] text-slate-300 font-bold uppercase">
-                            <input type="checkbox" id="f-reg" class="w-5 h-5 accent-yellow-500">
-                            <label for="f-reg">Akceptuję regulamin i przekazuję darowiznę 30 zł BLIK na utrzymanie serwisu (Art. 888 KC)
-                            ​​⚡ INFORMACJE PRAWNE I ZASADY DAROWIZNY
-​1. CAŁKOWITY BRAK ODPOWIEDZIALNOŚCI ZA WYKONAWCÓW
-Administrator serwisu nie bierze żadnej odpowiedzialności za rzetelność, jakość wykonanych prac, terminowość ani kulturę osobistą osób kontaktujących się w sprawie ogłoszenia. Nie jesteśmy stroną w umowie między Zlecającym a Wykonawcą. Wszelkie roszczenia, spory finansowe lub reklamacje muszą być kierowane bezpośrednio do wykonawcy. Korzystasz z serwisu na własne ryzyko.
-​2. WERYFIKACJA UPRAWNIEŃ (BEZPIECZEŃSTWO)
-Jako osoba prywatna dodająca ogłoszenie, masz bezwzględny obowiązek zażądać od elektryka okazania ważnych uprawnień SEP przed rozpoczęciem prac. Nieodpowiedzialne dopuszczenie osób bez uprawnień do instalacji grozi pożarem, porażeniem prądem oraz utratą ubezpieczenia nieruchomości.
-​3. STATUS DAROWIZNY (Art. 888 KC)
-Wpłata 30 PLN to dobrowolna darowizna na rzecz osoby fizycznej (wsparcie prywatnego projektu). Nie jesteśmy podmiotem gospodarczym i nie wystawiamy faktur. Darowizna wspiera techniczne działanie strony i jest bezzwrotna, niezależnie od tego, czy uda się znaleźć wykonawcę.
-​4. ZGODA NA PUBLIKACJĘ DANYCH
-Wysyłając SMS ze zleceniem, świadomie i dobrowolnie zgadzasz się na publiczne wyświetlenie Twojego numeru telefonu na liście ogłoszeń. Robisz to w celu umożliwienia elektrykom bezpośredniego kontaktu z Tobą. Dane usuwamy na prośbę wysłaną na: twojelektryk@hotmail.com.
-                        </div>
-                    </div>
+                <p class="text-[10px] text-slate-300 uppercase font-bold leading-relaxed mb-4">
+                    Prowadzimy tę giełdę prywatnie, aby ułatwić Wam kontakt z fachowcami. Jeśli chcesz pomóc nam utrzymać serwer i rozwijać stronę, będziemy wdzięczni za symboliczną cegiełkę.
+                </p>
 
-                    <div class="bg-black/40 p-5 rounded-xl border border-slate-800">
-                        <p class="text-[10px] text-yellow-500 font-black mb-2 uppercase italic">Wpłać 30 zł BLIK przed wysłaniem:</p>
-                        <p class="text-2xl font-black text-white tracking-widest">786 259 909</p>
-                    </div>
+                <div class="text-[9px] text-slate-500 space-y-2 leading-relaxed uppercase font-bold border-t border-slate-800 pt-4 mb-4">
+                    <p>• Nie jesteśmy firmą ani pośrednikiem – łączymy ludzi z pasji.</p>
+                    <p>• Nie bierzemy odpowiedzialności za terminowość i jakość prac – wybieraj fachowca mądrze.</p>
+                    <p>• Pamiętaj o sprawdzeniu uprawnień SEP przed dopuszczeniem do prac.</p>
+                    <p>• Twoje ogłoszenie z numerem telefonu będzie widoczne dla wszystkich użytkowników.</p>
+                </div>
 
-                    <button onclick="submitBySms()" class="w-full bg-yellow-500 text-slate-900 font-black py-5 rounded-xl uppercase italic shadow-lg hover:bg-yellow-400 transition mt-4">Wyślij Zlecenie przez SMS</button>
-                    <p class="text-center text-[9px] text-slate-600 uppercase font-bold mt-3">Ogłoszenie pojawi się po weryfikacji darowizny.</p>
+                <div class="flex items-start gap-3">
+                    <input type="checkbox" id="f-reg" class="w-6 h-6 mt-1 cursor-pointer accent-yellow-500 shrink-0">
+                    <label for="f-reg" class="text-[10px] text-slate-400 uppercase font-black cursor-pointer select-none leading-tight">
+                        Rozumiem zasady, akceptuję <button type="button" onclick="showPage('legal')" class="text-blue-400 underline">regulamin</button> i chcę wesprzeć serwis darowizną (Art. 888 KC).
+                    </label>
                 </div>
             </div>
-        </section>
+
+            <div class="grid grid-cols-1 gap-3">
+                <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=Wsparcie%20serwisu%20ogloszenie" 
+                   target="_blank" 
+                   class="block w-full bg-blue-600 text-white text-center py-4 rounded-xl font-black uppercase text-xs hover:bg-blue-500 transition shadow-lg border-b-4 border-blue-800 active:border-b-0">
+                    WESPRZYJ SERWIS (30 ZŁ DAROWIZNA)
+                </a>
+                
+                <div class="relative py-2 flex items-center">
+                    <div class="flex-grow border-t border-slate-800"></div>
+                    <span class="flex-shrink mx-4 text-[9px] text-slate-600 font-black uppercase">Następnie</span>
+                    <div class="flex-grow border-t border-slate-800"></div>
+                </div>
+
+                <button onclick="sendFuchaSMS()" class="w-full bg-yellow-500 text-slate-900 py-4 rounded-xl font-black uppercase text-xs hover:bg-yellow-400 transition-all active:scale-95 shadow-[0_0_20px_rgba(234,179,8,0.2)]">
+                    WYŚLIJ OGŁOSZENIE SMS-EM
+                </button>
+            </div>
+            
+            <p class="text-[8px] text-center text-slate-600 uppercase font-black italic mt-2">
+                * Wysłanie SMS-a jest darmowe (wg stawek Twojego operatora). Darowizna jest dobrowolna i pomaga nam opłacić serwer.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<script>
+function showPage(id) {
+    // Dodaliśmy 'premium-form' do listy sekcji do ukrycia
+    const pages = ['home', 'add', 'prices', 'contact', 'legal', 'premium-partner', 'premium-form'];
+    
+    pages.forEach(p => {
+        const el = document.getElementById(p);
+        if(el) el.classList.add('hidden');
+    });
+    
+    const target = document.getElementById(id);
+    if(target) {
+        target.classList.remove('hidden');
+    } else {
+        console.error("Nie znaleziono sekcji o ID: " + id);
+    }
+    
+    window.scrollTo(0,0);
+}
+
+function sendPartnerRequest() {
+    const nip = document.getElementById('p-nip').value;
+    const name = document.getElementById('p-name').value;
+    
+    if(!nip || !name) {
+        alert("Podaj przynajmniej NIP i nazwę firmy!");
+        return;
+    }
+
+    // 1. Otwiera Revolut w nowej karcie
+    window.open("https://revolut.me/krol1990?currency=PLN&amount=100000&note=PARTNER%20NIP%20" + nip, "_blank");
+    
+    // 2. Przygotowuje dane do wysłania mailem (użytkownik musi kliknąć "Wyślij" w swojej poczcie)
+    const body = `ZGŁOSZENIE PARTNERA\n\nNIP: ${nip}\nFirma: ${name}\nBranża: ${document.getElementById('p-type').value}\nTel: ${document.getElementById('p-tel').value}\nOpis: ${document.getElementById('p-desc').value}`;
+    window.location.href = `mailto:twojelektryk@hotmail.com?subject=NOWY PARTNER ${nip}&body=${encodeURIComponent(body)}`;
+}
+
+function sendFuchaSMS() {
+    const city = document.getElementById('f-city').value;
+    const desc = document.getElementById('f-desc').value;
+    const tel = document.getElementById('f-tel').value;
+    const accepted = document.getElementById('f-reg').checked;
+
+    if (!city || !desc || !tel) {
+        alert("Wypełnij wszystkie pola ogłoszenia!");
+        return;
+    }
+
+    if (!accepted) {
+        alert("Musisz zaakceptować regulamin!");
+        return;
+    }
+
+    // Tworzenie treści SMS
+    const message = `VOLT: MIASTO: ${city}. ZLECENIE: ${desc}. TEL: ${tel}. (DAROWIZNA REVOLUT POSZŁA)`;
+    
+    // Przekierowanie do aplikacji SMS
+    window.location.href = `sms:+48503784812?body=${encodeURIComponent(message)}`;
+}
+</script>
+
+   
+</div>
+
+<style>
+    /* Opcjonalne: ładniejszy pasek przewijania dla tekstu prawnego */
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #eab308; border-radius: 10px; }
+</style>
+
+ 
 
         <section id="prices" class="hidden max-w-4xl mx-auto">
-            <h2 class="text-3xl font-black text-yellow-500 uppercase italic text-center mb-10 italic">Orientacyjny Cennik 2026</h2>
-            <div class="grid md:grid-cols-2 gap-6 italic">
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                    <h3 class="text-blue-400 font-black uppercase text-xs mb-4">Instalacje</h3>
-                    <div class="space-y-3 text-[11px] font-bold uppercase">
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Punkt elektryczny</span><span class="text-white">140-220 zł</span></div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Montaż Rozdzielnicy</span><span class="text-white">od 800 zł</span></div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Podłączenie AGD</span><span class="text-white">150-250 zł</span></div>
-                    </div>
-                </div>
-                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                    <h3 class="text-blue-400 font-black uppercase text-xs mb-4">Inne</h3>
-                    <div class="space-y-3 text-[11px] font-bold uppercase">
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Pogotowie 24h</span><span class="text-white">od 350 zł</span></div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Pomiary (1 pkt)</span><span class="text-white">20-40 zł</span></div>
-                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>Wymiana licznika</span><span class="text-white">250-400 zł</span></div>
-                    </div>
+            <div class="max-w-4xl mx-auto p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl italic">
+    <div class="text-center mb-8">
+        <h2 class="text-white font-black uppercase text-2xl tracking-tighter italic">Orientacyjny Cennik Usług 2026</h2>
+        <p class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest mt-2">Uśrednione stawki rynkowe - woj. mazowieckie / ogólnopolskie</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-4">
+            <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Instalacje i Montaż</h3>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Punkt elektryczny (podejście)</span>
+                <span class="text-white">140 - 220 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Montaż rozdzielnicy (robocizna)</span>
+                <span class="text-white">od 800 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Podłączenie AGD (z wpisem do gwarancji)</span>
+                <span class="text-white">150 - 250 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Montaż osprzętu (gniazdko/łącznik)</span>
+                <span class="text-white">25 - 45 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Montaż lampy/żyrandola</span>
+                <span class="text-white">80 - 200 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Układanie przewodu (mb)</span>
+                <span class="text-white">8 - 15 zł</span>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Serwis, Pomiary, Inne</h3>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Pogotowie lokatorskie 24h</span>
+                <span class="text-white">od 350 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Pomiary elektryczne (za 1 pkt)</span>
+                <span class="text-white">20 - 45 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Wymiana licznika / WLZ</span>
+                <span class="text-white">250 - 500 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Lokalizacja usterki (diagnoza)</span>
+                <span class="text-white">150 - 300 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Przegląd instalacji (roczny)</span>
+                <span class="text-white">od 400 zł</span>
+            </div>
+            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
+                <span>Bruzdownie w betonie (mb)</span>
+                <span class="text-white">40 - 70 zł</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-10 p-4 bg-black/50 border-l-2 border-yellow-500 rounded-r-xl">
+        <p class="text-[9px] text-slate-400 leading-relaxed uppercase font-bold">
+            <span class="text-yellow-500">INFORMACJA PRAWNA:</span> Powyższe zestawienie cen ma charakter wyłącznie poglądowy i informacyjny. 
+            Ceny stanowią średnią stawek rynkowych zbieranych z ogólnodostępnych ofert w sieci i nie stanowią oferty handlowej w rozumieniu 
+            Art. 66 par. 1 Kodeksu Cywilnego. Każdy wykonawca na portalu ustala ceny indywidualnie w zależności od stopnia trudności prac, 
+            użytych materiałów oraz lokalizacji. Serwis nie ponosi odpowiedzialności za różnice w wycenach między użytkownikami.
+        </p>
+    </div>
+</div>
                 </div>
             </div>
         </section>
@@ -259,104 +520,75 @@ Wysyłając SMS ze zleceniem, świadomie i dobrowolnie zgadzasz się na publiczn
             <h2 class="text-3xl font-black text-yellow-500 uppercase italic mb-6">Kontakt</h2>
             <p class="text-slate-400 uppercase font-bold text-sm leading-loose">
                 Masz pytania dotyczące ogłoszeń? <br>
-                Zgubiłeś kod dostępu? <br>
                 <span class="text-white block mt-4 text-xl">twojelektryk@hotmail.com</span>
-                <span class="text-blue-400 block mt-2">Tel: 786 259 909 (SMS)</span>
+                <span class="text-blue-400 block mt-2">Tel: Wkrótce</span>
             </p>
         </section>
+<section id="legal" class="hidden max-w-4xl mx-auto italic">
+    <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 text-[10px] uppercase font-bold text-slate-400 leading-relaxed text-justify shadow-2xl">
+        
+        <div class="text-center mb-8">
+            <h2 class="text-xl font-black text-yellow-500 uppercase italic">Zasady Serwisu i Informacja Prawna</h2>
+            <p class="text-[8px] text-slate-600 mt-2 tracking-widest">OSTATNIA AKTUALIZACJA: 15.02.2026 R.</p>
+        </div>
+        
+        <div class="space-y-6">
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">1. Status Serwisu i Administratora</h3>
+                <p>Serwis <strong>Zlecenia Elektryczne</strong> jest <span class="text-yellow-500/80">prywatną platformą informacyjną o charakterze hobbystycznym</span>.</p>
+                <p>Administratorem Serwisu jest osoba fizyczna. <span class="text-white">Serwis nie jest firmą, agencją pośrednictwa pracy ani podmiotem gospodarczym.</span> Administrator nie prowadzi działalności gospodarczej w ramach serwisu i nie wystawia faktur VAT ani rachunków. Serwis pełni wyłącznie funkcję cyfrowej tablicy ogłoszeń ułatwiającej kontakt między pasjonatami i fachowcami.</p>
+            </section>
 
-        <section id="legal" class="hidden max-w-4xl mx-auto italic">
-            <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 text-[10px] uppercase font-bold text-slate-400 leading-relaxed text-justify">
-                <h2 class="text-xl font-black text-yellow-500 mb-6 uppercase text-center italic">Zasady Serwisu i Informacja Prawna</h2>
-                <p class="text-white mb-4 italic">1. STATUS SERWISU</p>
-                <p class="mb-6">Volt Zlecenia nie jest firmą, agencją pośrednictwa pracy ani podmiotem gospodarczym. Jest to prywatna platforma informacyjna prowadzona przez osobę fizyczną. Nie wystawiamy faktur VAT ani rachunków.</p>
-                <div class="volt-regulamin">
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">2. Charakter Usług i Brak Pośrednictwa</h3>
+                <p>Administrator udostępnia wyłącznie przestrzeń do publikacji ogłoszeń. <span class="text-white">Administrator nie jest stroną żadnych umów</span> ani ustaleń zawieranych pomiędzy Użytkownikami. Nie negocjuje warunków, nie pobiera prowizji i nie gwarantuje rzetelności stron. Wszelkie roszczenia należy kierować bezpośrednio do drugiej strony kontaktu.</p>
+            </section>
 
-    <h1>Regulamin Serwisu i Polityka Prywatności</h1>
-    <p><strong>Volt Zlecenia</strong></p>
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">3. Darowizny (Art. 888 Kodeksu Cywilnego)</h3>
+                <p>Dostęp do wybranych funkcji (np. odblokowanie numeru telefonu lub publikacja ogłoszenia) może być poprzedzony <span class="text-yellow-500/80">dobrowolną darowizną</span>. Wpłaty te stanowią dobrowolne wsparcie finansowe przeznaczane w całości na pokrycie kosztów utrzymania infrastruktury (serwer, domena). <span class="text-white">Darowizna jest bezzwrotna</span>, ma charakter jednostronny i nie stanowi zapłaty za usługę komercyjną.</p>
+            </section>
 
-    <h2>1. Informacje ogólne i status serwisu</h2>
-    <ol>
-        <li>Serwis Volt Zlecenia jest prywatną platformą informacyjną prowadzoną przez osobę fizyczną (Administratora).</li>
-        <li>Serwis nie jest firmą, agencją pośrednictwa pracy ani podmiotem gospodarczym.</li>
-        <li>Administrator nie prowadzi działalności gospodarczej oraz nie wystawia faktur VAT ani rachunków.</li>
-        <li>Serwis służy wyłącznie do publikowania ogłoszeń i wymiany informacji pomiędzy Użytkownikami.</li>
-    </ol>
+            <section class="bg-red-900/10 border border-red-900/30 p-4 rounded-xl">
+                <h3 class="text-red-500 mb-2 italic text-xs flex items-center gap-2">
+                    <i class="fa fa-exclamation-triangle"></i> 4. Bezpieczeństwo i Odpowiedzialność
+                </h3>
+                <p class="mb-2 text-red-400">ADMINISTRATOR NIE WERYFIKUJE TOŻSAMOŚCI, KWALIFIKACJI ANI UPRAWNIEŃ UŻYTKOWNIKÓW.</p>
+                <p class="text-white mb-2 font-black">OBOWIĄZEK ZLECENIODAWCY:</p>
+                <p class="mb-2">Każdy użytkownik ma <span class="text-white">bezwzględny obowiązek osobistego sprawdzenia aktualnych uprawnień elektrycznych (SEP)</span> wykonawcy przed dopuszczeniem go do jakichkolwiek prac na instalacji.</p>
+                <p class="text-[8px] opacity-70 italic leading-tight">Wyłączenie odpowiedzialności obejmuje w szczególności: szkody materialne, pożary, porażenia prądem, błędy w sztuce elektroinstalatorskiej oraz treść zamieszczanych ogłoszeń.</p>
+            </section>
 
-    <h2>2. Charakter serwisu – brak pośrednictwa</h2>
-    <ol>
-        <li>Serwis nie pośredniczy w zawieraniu umów pomiędzy Użytkownikami.</li>
-        <li>Administrator nie uczestniczy w negocjacjach ani realizacji zleceń.</li>
-        <li>Wszelkie umowy i rozliczenia odbywają się bezpośrednio pomiędzy Użytkownikami.</li>
-    </ol>
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">5. Zasady Publikacji i Dane Osobowe</h3>
+                <p>Publikując ogłoszenie, Użytkownik wyraża dobrowolną zgodę na upublicznienie swojego numeru telefonu w celu kontaktu. Dane są przetwarzane wyłącznie do celów emisji ogłoszenia. Ogłoszenia są usuwane automatycznie po 30 dniach lub ręcznie na prośbę wysłaną na: <span class="text-white">twojelektryk@hotmail.com</span>.</p>
+            </section>
 
-    <h2>3. Darowizny (art. 888 Kodeksu cywilnego)</h2>
-    <ol>
-        <li>Opłata za dodanie ogłoszenia (30 PLN) oraz za kod dostępu do numeru telefonu (30 PLN) ma charakter dobrowolnej darowizny.</li>
-        <li>Darowizny przeznaczone są na pokrycie kosztów utrzymania serwisu, domeny i serwera.</li>
-        <li>Darowizny są dobrowolne, bezzwrotne i niezależne od skuteczności ogłoszenia.</li>
-        <li>Administrator nie gwarantuje liczby odpowiedzi ani nawiązania współpracy.</li>
-    </ol>
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">6. Postanowienia Końcowe</h3>
+                <p>W sprawach nieuregulowanych zastosowanie mają przepisy <span class="text-white">Kodeksu Cywilnego</span>. Korzystanie z serwisu (przeglądanie, dodawanie ogłoszeń) oznacza pełną akceptację niniejszych zasad. Spory rozstrzyga sąd właściwy dla miejsca zamieszkania Administratora.</p>
+            </section>
+        </div>
 
-    <h2>4. Odpowiedzialność Użytkowników</h2>
-    <ol>
-        <li>Użytkownik ponosi pełną odpowiedzialność za treść ogłoszenia.</li>
-        <li>Administrator nie weryfikuje tożsamości ani kwalifikacji wykonawców.</li>
-        <li>Zleceniodawca ma obowiązek sprawdzić uprawnienia SEP wykonawcy przed dopuszczeniem do prac.</li>
-        <li>Administrator nie odpowiada za szkody, pożary, błędy w sztuce ani niewykonanie zleceń.</li>
-    </ol>
-
-    <h2>5. Usuwanie ogłoszeń</h2>
-    <ol>
-        <li>Administrator zastrzega sobie prawo do usunięcia ogłoszenia bez podania przyczyny.</li>
-        <li>Usunięcie ogłoszenia nie stanowi podstawy do zwrotu darowizny.</li>
-    </ol>
-
-    <h2>6. Wiek Użytkownika</h2>
-    <ol>
-        <li>Korzystanie z Serwisu dozwolone jest wyłącznie dla osób pełnoletnich.</li>
-    </ol>
-
-    <h2>7. Polityka prywatności (RODO)</h2>
-    <ol>
-        <li>Administratorem danych osobowych jest Administrator Serwisu.</li>
-        <li>Przetwarzane dane obejmują wyłącznie numer telefonu oraz adres e-mail (jeśli został podany).</li>
-        <li>Dane nie są wykorzystywane w celach marketingowych ani przekazywane osobom trzecim.</li>
-        <li>Dane są usuwane na żądanie Użytkownika.</li>
-        <li>Kontakt w sprawach danych osobowych: <a href="mailto:twojelektryk@hotmail.com">twojelektryk@hotmail.com</a></li>
-    </ol>
-
-    <h2>8. Prawo właściwe</h2>
-    <ol>
-        <li>Do spraw nieuregulowanych zastosowanie ma prawo polskie.</li>
-        <li>Ewentualne spory rozstrzygane będą przez sąd właściwy dla miejsca zamieszkania Administratora.</li>
-    </ol>
-
-</div>
-
-                <p class="text-white mb-4 italic">2. DAROWIZNY (Art. 888 KC)</p>
-                <p class="mb-6">Wszystkie opłaty za dodanie ogłoszenia (30 PLN) oraz kody dostępu do numerów (30 PLN) stanowią dobrowolne darowizny przekazywane przez Użytkowników na rzecz Administratora w celu pokrycia kosztów utrzymania serwisu, domeny i serwera. Przekazanie środków jest dobrowolne i bezzwrotne.</p>
-
-                <p class="text-white mb-4 italic">3. ODPOWIEDZIALNOŚĆ I BEZPIECZEŃSTWO</p>
-                <p class="mb-6">Administrator nie weryfikuje tożsamości zleceniodawców ani kompetencji wykonawców. Serwis służy wyłącznie do wymiany informacji. <span class="text-red-500">Zleceniodawca ma bezwzględny obowiązek sprawdzić uprawnienia SEP wykonawcy przed dopuszczeniem go do prac pod napięciem.</span> Administrator nie odpowiada za szkody, pożary lub błędy w sztuce.</p>
-
-                <p class="text-white mb-4 italic">4. RODO / POLITYKA PRYWATNOŚCI</p>
-                <p class="mb-6">Nie przetwarzamy danych w celach marketingowych. Numery telefonów są publikowane wyłącznie na prośbę Użytkownika. Wszystkie dane są usuwane na żądanie pod adresem: twojelektryk@hotmail.com.</p>
-            </div>
+        <div class="mt-8 text-center">
+            <button onclick="showPage('home')" class="bg-yellow-500 text-slate-900 px-10 py-3 rounded-xl font-black uppercase text-[10px] transition hover:bg-yellow-400 shadow-lg">Rozumiem i akceptuję - Wróć</button>
+        </div>
+    </div>
+</section>
         </section>
 
     </main>
 
     <footer class="bg-slate-900 border-t border-slate-800 py-10">
         <div class="container mx-auto px-4 text-center italic">
-            <p class="text-yellow-500 font-black uppercase italic tracking-widest">Volt Zlecenia 2026</p>
+            <p class="text-yellow-500 font-black uppercase italic tracking-widest">Zlecenia Elektryczne 2026</p>
             <div class="flex flex-wrap justify-center gap-6 mt-6 text-[10px] font-black uppercase text-slate-500">
                 <button onclick="showPage('legal')" class="hover:text-white transition underline">Regulamin</button>
                 <button onclick="showPage('legal')" class="hover:text-white transition underline">Polityka Prywatności</button>
                 <button onclick="showPage('prices')" class="hover:text-white transition underline">Cennik</button>
                 <button onclick="showPage('contact')" class="hover:text-white transition underline">Kontakt</button>
             </div>
-            <p class="mt-8 text-[8px] text-slate-700 uppercase">Projekt prywatny - 100% Darowizny na utrzymanie</p>
+            <p class="mt-8 text-[12px] text-slate-700 uppercase">Projekt prywatny - 100% Darowizny na utrzymanie</p>
         </div>
     </footer>
 
@@ -392,7 +624,7 @@ Wysyłając SMS ze zleceniem, świadomie i dobrowolnie zgadzasz się na publiczn
             }
 
             const body = `DAROWIZNA OPLACONA. ZLECENIE: ${city}, ${desc}, TEL: ${tel}`;
-            window.location.href = `sms:786259909?body=${encodeURIComponent(body)}`;
+            window.location.href = `sms:503784812?body=${encodeURIComponent(body)}`;
         }
 
         function unlockAd(id, phone) {
@@ -426,6 +658,35 @@ Wysyłając SMS ze zleceniem, świadomie i dobrowolnie zgadzasz się na publiczn
 </div>
 
 <script>
+function unlockContact(id, phone) {
+    const box = document.getElementById('box-' + id);
+    box.innerHTML = `
+        <div class="border-t border-slate-800 pt-4 animate-fade-in">
+            <a href="tel:+48${phone.replace(/\s/g, '')}" class="block w-full bg-green-600 hover:bg-green-500 text-white text-center py-4 rounded-xl font-black text-xl italic transition mb-4">
+                <i class="fa fa-phone-alt mr-2"></i> ${phone}
+            </a>
+
+            <div class="bg-blue-900/30 border border-blue-500/30 p-4 rounded-xl text-center">
+                <p class="text-[9px] text-blue-300 font-black uppercase mb-3 tracking-tighter">
+                    Wsparcie na prowadzenie serwisu:
+                </p>
+                
+                <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=Wsparcie%20serwisu%20Zlecenie%20${id}" 
+                   target="_blank" 
+                   class="inline-block bg-white text-blue-900 px-4 py-2 rounded-lg font-black text-[9px] uppercase hover:bg-blue-100 transition mb-3">
+                   WPŁAĆ 30 ZŁ (REVOLUT)
+                </a>
+
+                <div class="flex justify-center gap-4 border-t border-blue-500/10 pt-3">
+                    <button onclick="showPage('legal')" class="text-[8px] text-slate-500 uppercase font-bold hover:text-white transition underline">Regulamin</button>
+                    <span class="text-slate-700">|</span>
+                    <p class="text-[8px] text-slate-500 uppercase font-bold italic">Darowizna Art. 888 KC</p>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
     function checkCookies() {
         if (!localStorage.getItem('cookiesAccepted_v1')) {
             document.getElementById('cookie-bar').classList.remove('hidden');
@@ -442,4 +703,4 @@ Wysyłając SMS ze zleceniem, świadomie i dobrowolnie zgadzasz się na publiczn
 </script>
 
 </body>
-</html>
+</html> 
