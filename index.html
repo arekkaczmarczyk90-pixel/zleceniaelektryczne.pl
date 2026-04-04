@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zlecenia Elektryczne – Giełda dla fachowców</title>
-  <meta name="description" content="Znajdź zlecenia elektryczne lub dodaj ofertę. Giełda zleceń dla elektryków i fachowców z całej Polski.">
-  <!-- Optional: meta robots if needed -->
-</head>
-<body>
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Giełda zleceń elektrycznych – dodaj zlecenie dla elektryka lub znajdź wykonawcę z Twojej okolicy. Wymiana kontaktów, instalacje, naprawy i inne prace elektryczne.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> ZLECENIA ELEKTRYCZE| Prywatna Giełda dla Elektryków</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -336,7 +333,7 @@
                 <div class="flex items-start gap-3">
                     <input type="checkbox" id="f-reg" class="w-6 h-6 mt-1 cursor-pointer accent-yellow-500 shrink-0">
                     <label for="f-reg" class="text-[10px] text-slate-400 uppercase font-black cursor-pointer select-none leading-tight">
-                        Rozumiem zasady, akceptuję <button type="button" onclick="showPage('legal')" class="text-blue-400 underline">regulamin</button>
+                        Rozumiem zasady, akceptuję <button type="button" onclick="showPage('legal')" class="text-blue-400 underline">regulamin</button> i chcę wesprzeć serwis darowizną (Art. 888 KC).
                     </label>
                 </div>
             </div>
@@ -526,146 +523,51 @@ function sendFuchaSMS() {
                 <span class="text-blue-400 block mt-2">Tel: Wkrótce</span>
             </p>
         </section>
+<section id="legal" class="hidden max-w-4xl mx-auto italic">
+    <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 text-[10px] uppercase font-bold text-slate-400 leading-relaxed text-justify shadow-2xl">
+        
+        <div class="text-center mb-8">
+            <h2 class="text-xl font-black text-yellow-500 uppercase italic">Zasady Serwisu i Informacja Prawna</h2>
+            <p class="text-[8px] text-slate-600 mt-2 tracking-widest">OSTATNIA AKTUALIZACJA: 15.02.2026 R.</p>
+        </div>
+        
+        <div class="space-y-6">
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">1. Status Serwisu i Administratora</h3>
+                <p>Serwis <strong>Zlecenia Elektryczne</strong> jest <span class="text-yellow-500/80">prywatną platformą informacyjną o charakterze hobbystycznym</span>.</p>
+                <p>Administratorem Serwisu jest osoba fizyczna. <span class="text-white">Serwis nie jest firmą, agencją pośrednictwa pracy ani podmiotem gospodarczym.</span> Administrator nie prowadzi działalności gospodarczej w ramach serwisu i nie wystawia faktur VAT ani rachunków. Serwis pełni wyłącznie funkcję cyfrowej tablicy ogłoszeń ułatwiającej kontakt między pasjonatami i fachowcami.</p>
+            </section>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Regulamin Serwisu Zlecenia Elektryczne</title>
-<style>
-  body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; color: #333; }
-  h1, h2 { color: #222; }
-  .important { color: red; font-weight: bold; }
-  section { margin-bottom: 20px; }
-  ol { margin-left: 20px; }
-  li { margin-bottom: 8px; }
-  a { color: #0066cc; text-decoration: none; }
-  a:hover { text-decoration: underline; }
-</style>
-</head>
-<body>
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">2. Charakter Usług i Brak Pośrednictwa</h3>
+                <p>Administrator udostępnia wyłącznie przestrzeń do publikacji ogłoszeń. <span class="text-white">Administrator nie jest stroną żadnych umów</span> ani ustaleń zawieranych pomiędzy Użytkownikami. Nie negocjuje warunków, nie pobiera prowizji i nie gwarantuje rzetelności stron. Wszelkie roszczenia należy kierować bezpośrednio do drugiej strony kontaktu.</p>
+            </section>
 
-<h1>Regulamin Serwisu „Zlecenia Elektryczne”</h1>
-<p><strong>Data ostatniej aktualizacji: 15.02.2026 r.</strong></p>
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">3. Darowizny (Art. 888 Kodeksu Cywilnego)</h3>
+                <p>Dostęp do wybranych funkcji (np. odblokowanie numeru telefonu lub publikacja ogłoszenia) może być poprzedzony <span class="text-yellow-500/80">dobrowolną darowizną</span>. Wpłaty te stanowią dobrowolne wsparcie finansowe przeznaczane w całości na pokrycie kosztów utrzymania infrastruktury (serwer, domena). <span class="text-white">Darowizna jest bezzwrotna</span>, ma charakter jednostronny i nie stanowi zapłaty za usługę komercyjną.</p>
+            </section>
 
-<section>
-<h2>§1. Postanowienia ogólne</h2>
-<ol>
-<li>Niniejszy regulamin określa zasady korzystania z serwisu internetowego „Zlecenia Elektryczne”, zwanego dalej „Serwisem”.</li>
-<li>Serwis ma charakter prywatny, informacyjny i hobbystyczny.</li>
-<li>Administratorem Serwisu jest osoba fizyczna, zwana dalej „Administratorem”.</li>
-<li>Administrator nie prowadzi działalności gospodarczej w ramach Serwisu.</li>
-<li>Serwis nie jest agencją pośrednictwa pracy, firmą usługową ani stroną umów zawieranych między użytkownikami.</li>
-</ol>
-</section>
+            <section class="bg-red-900/10 border border-red-900/30 p-4 rounded-xl">
+                <h3 class="text-red-500 mb-2 italic text-xs flex items-center gap-2">
+                    <i class="fa fa-exclamation-triangle"></i> 4. Bezpieczeństwo i Odpowiedzialność
+                </h3>
+                <p class="mb-2 text-red-400">ADMINISTRATOR NIE WERYFIKUJE TOŻSAMOŚCI, KWALIFIKACJI ANI UPRAWNIEŃ UŻYTKOWNIKÓW.</p>
+                <p class="text-white mb-2 font-black">OBOWIĄZEK ZLECENIODAWCY:</p>
+                <p class="mb-2">Każdy użytkownik ma <span class="text-white">bezwzględny obowiązek osobistego sprawdzenia aktualnych uprawnień elektrycznych (SEP)</span> wykonawcy przed dopuszczeniem go do jakichkolwiek prac na instalacji.</p>
+                <p class="text-[8px] opacity-70 italic leading-tight">Wyłączenie odpowiedzialności obejmuje w szczególności: szkody materialne, pożary, porażenia prądem, błędy w sztuce elektroinstalatorskiej oraz treść zamieszczanych ogłoszeń.</p>
+            </section>
 
-<section>
-<h2>§2. Charakter Serwisu</h2>
-<ol>
-<li>Serwis stanowi wyłącznie platformę umożliwiającą publikację ogłoszeń oraz nawiązywanie kontaktu pomiędzy użytkownikami.</li>
-<li>Administrator nie uczestniczy w negocjacjach, ustaleniach ani realizacji usług pomiędzy użytkownikami.</li>
-<li>Administrator nie pobiera prowizji od transakcji oraz nie gwarantuje ich wykonania.</li>
-</ol>
-</section>
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">5. Zasady Publikacji i Dane Osobowe</h3>
+                <p>Publikując ogłoszenie, Użytkownik wyraża dobrowolną zgodę na upublicznienie swojego numeru telefonu w celu kontaktu. Dane są przetwarzane wyłącznie do celów emisji ogłoszenia. Ogłoszenia są usuwane automatycznie po 30 dniach lub ręcznie na prośbę wysłaną na: <span class="text-white">twojelektryk@hotmail.com</span>.</p>
+            </section>
 
-<section>
-<h2>§3. Bezpłatność Serwisu</h2>
-<ol>
-<li>Korzystanie z Serwisu, w tym przeglądanie oraz publikowanie ogłoszeń, jest całkowicie bezpłatne.</li>
-<li>Żadna funkcja Serwisu nie wymaga dokonania płatności.</li>
-<li>Administrator nie pobiera opłat za dostęp do danych kontaktowych ani publikację treści.</li>
-</ol>
-</section>
-
-<section>
-<h2>§4. Darowizny</h2>
-<ol>
-<li>Użytkownicy mogą dobrowolnie wspierać funkcjonowanie Serwisu poprzez darowizny.</li>
-<li>Darowizny mają charakter całkowicie dobrowolny i nie są warunkiem korzystania z Serwisu.</li>
-<li>Dokonanie darowizny nie wpływa na:
-  <ul>
-    <li>widoczność ogłoszeń,</li>
-    <li>dostęp do funkcji Serwisu,</li>
-    <li>kolejność wyświetlania treści.</li>
-  </ul>
-</li>
-<li>Darowizna ma charakter jednostronny w rozumieniu art. 888 Kodeksu cywilnego i nie stanowi zapłaty za usługę.</li>
-<li>Darowizny są bezzwrotne.</li>
-<li>Użytkownik dokonujący darowizny zrzeka się roszczeń wobec Administratora związanych z jej dokonaniem.</li>
-<li>Środki z darowizn przeznaczane są na utrzymanie Serwisu (np. serwer, domena).</li>
-</ol>
-</section>
-
-<section>
-<h2>§5. Odpowiedzialność i bezpieczeństwo</h2>
-<ol>
-<li>Administrator nie weryfikuje tożsamości, kwalifikacji ani uprawnień użytkowników.</li>
-<li>Administrator nie ponosi odpowiedzialności za:
-  <ul>
-    <li>treść ogłoszeń,</li>
-    <li>działania użytkowników,</li>
-    <li>realizację umów między użytkownikami,</li>
-    <li>szkody wynikające z wykonanych usług.</li>
-  </ul>
-</li>
-<li>Wyłączenie odpowiedzialności obowiązuje w najszerszym zakresie dopuszczalnym przez obowiązujące przepisy prawa.</li>
-<li class="important">Każdy użytkownik zobowiązany jest do samodzielnej weryfikacji drugiej strony przed podjęciem współpracy.</li>
-<li class="important">Użytkownik ma obowiązek sprawdzenia aktualnych uprawnień elektrycznych (np. SEP) wykonawcy przed dopuszczeniem go do pracy na instalacji elektrycznej.</li>
-</ol>
-</section>
-
-<section>
-<h2>§6. Zasady publikacji ogłoszeń</h2>
-<ol>
-<li>Użytkownik może publikować ogłoszenia zgodne z tematyką Serwisu.</li>
-<li>Zabrania się publikowania treści:
-  <ul>
-    <li>niezgodnych z prawem,</li>
-    <li>wprowadzających w błąd,</li>
-    <li>obraźliwych lub naruszających dobra osobiste,</li>
-    <li>zawierających spam.</li>
-  </ul>
-</li>
-<li>Administrator zastrzega sobie prawo do usuwania ogłoszeń bez podania przyczyny.</li>
-<li>Ogłoszenia są publikowane na czas maksymalnie 30 dni.</li>
-</ol>
-</section>
-
-<section>
-<h2>§7. Dane osobowe</h2>
-<ol>
-<li>Administratorem danych osobowych jest Administrator Serwisu.</li>
-<li>Publikując ogłoszenie, użytkownik wyraża zgodę na upublicznienie podanych danych kontaktowych.</li>
-<li>Dane przetwarzane są wyłącznie w celu publikacji ogłoszenia.</li>
-<li>Użytkownik ma prawo do:
-  <ul>
-    <li>dostępu do swoich danych,</li>
-    <li>ich poprawiania,</li>
-    <li>żądania usunięcia.</li>
-  </ul>
-</li>
-<li>W celu usunięcia danych użytkownik może skontaktować się z Administratorem pod adresem: <a href="mailto:twojelektryk@hotmail.com">twojelektryk@hotmail.com</a>.</li>
-</ol>
-</section>
-
-<section>
-<h2>§8. Usuwanie treści i kont</h2>
-<ol>
-<li>Administrator ma prawo usunąć ogłoszenie lub zablokować użytkownika w przypadku naruszenia regulaminu.</li>
-<li>Użytkownik może zgłosić usunięcie swojego ogłoszenia w dowolnym momencie poprzez mail: <a href="mailto:twojelektryk@hotmail.com">twojelektryk@hotmail.com</a>.</li>
-</ol>
-</section>
-
-<section>
-<h2>§9. Postanowienia końcowe</h2>
-<ol>
-<li>W sprawach nieuregulowanych zastosowanie mają przepisy Kodeksu cywilnego.</li>
-<li>Korzystanie z Serwisu oznacza akceptację niniejszego regulaminu.</li>
-<li>Spory rozstrzygane są przez właściwe sądy zgodnie z obowiązującymi przepisami prawa, z uwzględnieniem praw konsumentów.</li>
-<li>Administrator zastrzega sobie prawo do zmiany regulaminu w dowolnym czasie.</li>
-</ol>
-</section>
-
-</body>
-</html>
+            <section>
+                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">6. Postanowienia Końcowe</h3>
+                <p>W sprawach nieuregulowanych zastosowanie mają przepisy <span class="text-white">Kodeksu Cywilnego</span>. Korzystanie z serwisu (przeglądanie, dodawanie ogłoszeń) oznacza pełną akceptację niniejszych zasad. Spory rozstrzyga sąd właściwy dla miejsca zamieszkania Administratora.</p>
+            </section>
+        </div>
 
         <div class="mt-8 text-center">
             <button onclick="showPage('home')" class="bg-yellow-500 text-slate-900 px-10 py-3 rounded-xl font-black uppercase text-[10px] transition hover:bg-yellow-400 shadow-lg">Rozumiem i akceptuję - Wróć</button>
@@ -801,3 +703,4 @@ function unlockContact(id, phone) {
 
 </body>
 </html>                               
+    
