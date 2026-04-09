@@ -253,7 +253,7 @@
                    class="w-5 h-5 mt-1 cursor-pointer accent-yellow-500 rounded border-slate-700 bg-slate-800">
             <label for="accept-terms" class="text-[10px] text-slate-300 uppercase font-bold cursor-pointer select-none leading-tight">
                 Akceptuję pełny <button onclick="showPage('legal')" class="text-yellow-500 underline hover:text-yellow-400">regulamin serwisu</button>, 
-                potwierdzam dobrowolność darowizny (Art. 888 KC) i rozumiem zasady weryfikacji ręcznej.
+                
             </label>
         </div>
 
@@ -531,42 +531,165 @@ function sendFuchaSMS() {
             <p class="text-[8px] text-slate-600 mt-2 tracking-widest">OSTATNIA AKTUALIZACJA: 15.02.2026 R.</p>
         </div>
         
-        <div class="space-y-6">
-            <section>
-                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">1. Status Serwisu i Administratora</h3>
-                <p>Serwis <strong>Zlecenia Elektryczne</strong> jest <span class="text-yellow-500/80">prywatną platformą informacyjną o charakterze hobbystycznym</span>.</p>
-                <p>Administratorem Serwisu jest osoba fizyczna. <span class="text-white">Serwis nie jest firmą, agencją pośrednictwa pracy ani podmiotem gospodarczym.</span> Administrator nie prowadzi działalności gospodarczej w ramach serwisu i nie wystawia faktur VAT ani rachunków. Serwis pełni wyłącznie funkcję cyfrowej tablicy ogłoszeń ułatwiającej kontakt między pasjonatami i fachowcami.</p>
-            </section>
+          <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #0056b3;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        ul {
+            margin: 10px 0 20px 20px;
+        }
+        a {
+            color: #0056b3;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .faq-item {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Regulamin i Polityka Prywatności</h1>
+    <p><strong>Właściciel Serwisu:</strong> Arkadiusz Kaczmarczyk<br>
+       <strong>Kontakt:</strong> <a href="mailto:twojelektryk@hotmail.com">twojelektryk@hotmail.com</a></p>
 
-            <section>
-                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">2. Charakter Usług i Brak Pośrednictwa</h3>
-                <p>Administrator udostępnia wyłącznie przestrzeń do publikacji ogłoszeń. <span class="text-white">Administrator nie jest stroną żadnych umów</span> ani ustaleń zawieranych pomiędzy Użytkownikami. Nie negocjuje warunków, nie pobiera prowizji i nie gwarantuje rzetelności stron. Wszelkie roszczenia należy kierować bezpośrednio do drugiej strony kontaktu.</p>
-            </section>
+    <div class="section" id="status-serwisu">
+        <h2>1. Status Serwisu i Administratora</h2>
+        <ul>
+            <li>ZleceniaElektryczne.pl (dalej: „Serwis”) jest prywatną platformą informacyjną o charakterze hobbystycznym, prowadzoną przez osobę fizyczną – Arkadiusza Kaczmarczyka (dalej: „Administrator”).</li>
+            <li>Serwis nie jest firmą, agencją pośrednictwa pracy ani podmiotem gospodarczym.</li>
+            <li>Administrator nie prowadzi działalności gospodarczej i nie wystawia faktur VAT ani rachunków.</li>
+            <li>Serwis pełni funkcję tablicy ogłoszeń umożliwiającej kontakt pomiędzy Użytkownikami.</li>
+        </ul>
+    </div>
 
-            <section>
-                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">3. Darowizny (Art. 888 Kodeksu Cywilnego)</h3>
-                <p>Dostęp do wybranych funkcji (np. odblokowanie numeru telefonu lub publikacja ogłoszenia) może być poprzedzony <span class="text-yellow-500/80">dobrowolną darowizną</span>. Wpłaty te stanowią dobrowolne wsparcie finansowe przeznaczane w całości na pokrycie kosztów utrzymania infrastruktury (serwer, domena). <span class="text-white">Darowizna jest bezzwrotna</span>, ma charakter jednostronny i nie stanowi zapłaty za usługę komercyjną.</p>
-            </section>
+    <div class="section" id="definicje">
+        <h2>2. Definicje</h2>
+        <ul>
+            <li><strong>Użytkownik</strong> – każda osoba korzystająca z Serwisu, w tym Zleceniodawcy i Wykonawcy.</li>
+            <li><strong>Ogłoszenie</strong> – treść publikowana w Serwisie przez Użytkownika w celu nawiązania kontaktu między Zleceniodawcą a Wykonawcą.</li>
+            <li><strong>Darowizna</strong> – dobrowolna wpłata na rzecz Administratora, wspierająca utrzymanie i rozwój Serwisu.</li>
+        </ul>
+    </div>
 
-            <section class="bg-red-900/10 border border-red-900/30 p-4 rounded-xl">
-                <h3 class="text-red-500 mb-2 italic text-xs flex items-center gap-2">
-                    <i class="fa fa-exclamation-triangle"></i> 4. Bezpieczeństwo i Odpowiedzialność
-                </h3>
-                <p class="mb-2 text-red-400">ADMINISTRATOR NIE WERYFIKUJE TOŻSAMOŚCI, KWALIFIKACJI ANI UPRAWNIEŃ UŻYTKOWNIKÓW.</p>
-                <p class="text-white mb-2 font-black">OBOWIĄZEK ZLECENIODAWCY:</p>
-                <p class="mb-2">Każdy użytkownik ma <span class="text-white">bezwzględny obowiązek osobistego sprawdzenia aktualnych uprawnień elektrycznych (SEP)</span> wykonawcy przed dopuszczeniem go do jakichkolwiek prac na instalacji.</p>
-                <p class="text-[8px] opacity-70 italic leading-tight">Wyłączenie odpowiedzialności obejmuje w szczególności: szkody materialne, pożary, porażenia prądem, błędy w sztuce elektroinstalatorskiej oraz treść zamieszczanych ogłoszeń.</p>
-            </section>
+    <div class="section" id="warunki-korzystania">
+        <h2>3. Warunki korzystania z Serwisu</h2>
+        <ul>
+            <li>Korzystanie z Serwisu jest dobrowolne i następuje na własną odpowiedzialność Użytkownika.</li>
+            <li>Użytkownik musi mieć ukończone 18 lat.</li>
+            <li>Wykonawcy prac elektrycznych muszą posiadać aktualne uprawnienia SEP oraz inne wymagane prawem certyfikaty.</li>
+            <li>Użytkownik zobowiązuje się korzystać z Serwisu zgodnie z prawem, niniejszym Regulaminem i dobrymi obyczajami.</li>
+        </ul>
+    </div>
 
-            <section>
-                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">5. Zasady Publikacji i Dane Osobowe</h3>
-                <p>Publikując ogłoszenie, Użytkownik wyraża dobrowolną zgodę na upublicznienie swojego numeru telefonu w celu kontaktu. Dane są przetwarzane wyłącznie do celów emisji ogłoszenia. Ogłoszenia są usuwane automatycznie po 30 dniach lub ręcznie na prośbę wysłaną na: <span class="text-white">twojelektryk@hotmail.com</span>.</p>
-            </section>
+    <div class="section" id="zasady-ogloszen">
+        <h2>4. Zasady publikacji ogłoszeń</h2>
+        <ul>
+            <li>Publikacja ogłoszeń jest <strong>bezpłatna</strong>.</li>
+            <li>Użytkownicy mogą dobrowolnie wspierać Serwis darowizną (sugerowana kwota: 30 PLN), np. w celu zwiększenia widoczności ogłoszenia lub publikacji numeru telefonu.</li>
+            <li>Ogłoszenia muszą być zgodne z prawem, nie wprowadzać w błąd, nie zawierać spamu ani treści obraźliwych.</li>
+            <li>Administrator zastrzega sobie prawo do usunięcia ogłoszenia bez podania przyczyny.</li>
+            <li>Ogłoszenia są przechowywane w Serwisie przez 30 dni lub do momentu żądania ich usunięcia przez Użytkownika.</li>
+            <li>Użytkownik odpowiada za prawdziwość podanych danych i treści ogłoszenia.</li>
+        </ul>
+    </div>
 
-            <section>
-                <h3 class="text-white mb-2 italic border-b border-slate-800 pb-1 text-xs">6. Postanowienia Końcowe</h3>
-                <p>W sprawach nieuregulowanych zastosowanie mają przepisy <span class="text-white">Kodeksu Cywilnego</span>. Korzystanie z serwisu (przeglądanie, dodawanie ogłoszeń) oznacza pełną akceptację niniejszych zasad. Spory rozstrzyga sąd właściwy dla miejsca zamieszkania Administratora.</p>
-            </section>
+    <div class="section" id="darowizny">
+        <h2>5. Darowizny</h2>
+        <ul>
+            <li>Wszelkie opłaty sugerowane przez Serwis są <strong>dobrowolnymi darowiznami</strong> i nie stanowią zakupu usługi.</li>
+            <li>Darowizny przeznaczane są wyłącznie na utrzymanie serwisu, domeny i serwera.</li>
+            <li>Darowizny są bezzwrotne.</li>
+            <li>Brak darowizny nie ogranicza funkcjonalności Serwisu.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="odpowiedzialnosc">
+        <h2>6. Odpowiedzialność i bezpieczeństwo</h2>
+        <ul>
+            <li>Administrator <strong>nie weryfikuje</strong> tożsamości ani kwalifikacji Użytkowników.</li>
+            <li>Administrator nie ponosi odpowiedzialności za:
+                <ul>
+                    <li>Szkody materialne lub pożary wynikłe z działań Użytkowników</li>
+                    <li>Błędy w treści ogłoszeń</li>
+                    <li>Nieprawidłowe wykonanie prac przez Wykonawców</li>
+                    <li>Przerwy techniczne lub awarie Serwisu</li>
+                </ul>
+            </li>
+            <li>Zleceniodawca ma obowiązek sprawdzenia kwalifikacji i uprawnień wykonawcy przed dopuszczeniem go do pracy.</li>
+            <li>Użytkownicy zobowiązani są do zachowania zasad bezpieczeństwa i stosowania się do przepisów prawa podczas realizacji zleceń.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="rodo">
+        <h2>7. Polityka prywatności i RODO</h2>
+        <ul>
+            <li>Administratorem danych osobowych jest Arkadiusz Kaczmarczyk.</li>
+            <li>Dane zbierane są wyłącznie w celu umożliwienia kontaktu między Użytkownikami i administrowania Serwisem.</li>
+            <li>Dane nie są wykorzystywane w celach marketingowych ani sprzedawane osobom trzecim.</li>
+            <li>Użytkownik może żądać dostępu do swoich danych, ich poprawy lub usunięcia, kontaktując się pod adresem: <a href="mailto:twojelektryk@hotmail.com">twojelektryk@hotmail.com</a></li>
+            <li>Numery telefonów publikowane są <strong>tylko na wyraźną prośbę Użytkownika</strong>.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="cookies">
+        <h2>8. Pliki cookies</h2>
+        <ul>
+            <li>Serwis używa plików cookies w celach statystycznych i technicznych.</li>
+            <li>Pliki cookies nie zawierają danych osobowych, które pozwalałyby na identyfikację Użytkownika.</li>
+            <li>Użytkownik może w każdej chwili zmienić ustawienia przeglądarki, aby zablokować pliki cookies.</li>
+        </ul>
+    </div>
+
+    <div class="section" id="faq">
+        <h2>9. FAQ – najważniejsze informacje dla Użytkowników</h2>
+        <div class="faq-item">
+            <strong>Pytanie:</strong> Czy Serwis pobiera prowizje?<br>
+            <strong>Odpowiedź:</strong> Nie, Serwis działa wyłącznie jako platforma informacyjna, wszystkie wpłaty są dobrowolnymi darowiznami.
+        </div>
+        <div class="faq-item">
+            <strong>Pytanie:</strong> Czy Administrator sprawdza kwalifikacje elektryków?<br>
+            <strong>Odpowiedź:</strong> Nie, sprawdzenie uprawnień i kompetencji wykonawcy należy do Zleceniodawcy.
+        </div>
+        <div class="faq-item">
+            <strong>Pytanie:</strong> Czy numery telefonów są publiczne?<br>
+            <strong>Odpowiedź:</strong> Tak, tylko jeśli Użytkownik wyrazi zgodę na ich publikację.
+        </div>
+        <div class="faq-item">
+            <strong>Pytanie:</strong> Co jeśli ogłoszenie jest niezgodne z regulaminem?<br>
+            <strong>Odpowiedź:</strong> Administrator może je usunąć bez podania przyczyny.
+        </div>
+    </div>
+
+    <div class="section" id="postanowienia">
+        <h2>10. Postanowienia końcowe</h2>
+        <ul>
+            <li>W sprawach nieuregulowanych niniejszym Regulaminem stosuje się przepisy Kodeksu Cywilnego.</li>
+            <li>Administrator zastrzega sobie prawo do zmiany Regulaminu w dowolnym czasie.</li>
+            <li>Spory wynikłe z korzystania z Serwisu rozstrzyga sąd właściwy dla miejsca zamieszkania Administratora.</li>
+            <li>Regulamin wchodzi w życie z dniem publikacji na stronie Serwisu.</li>
+        </ul>
+    </div>
+
+    <footer>
+        <p>© ZleceniaElektryczne.pl – Regulamin i Polityka Prywatności</p>
+    </footer>
+
         </div>
 
         <div class="mt-8 text-center">
