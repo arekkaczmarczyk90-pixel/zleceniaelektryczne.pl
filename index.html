@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -5,7 +6,7 @@
     <meta name="description" content="Giełda zleceń elektrycznych – dodaj zlecenie dla elektryka lub znajdź wykonawcę z Twojej okolicy. Wymiana kontaktów, instalacje, naprawy i inne prace elektryczne.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> ZLECENIA ELEKTRYCZE| Prywatna Giełda dla Elektryków</title>
+    <title>ZLECENIA ELEKTRYCZNE | Prywatna Giełda dla Elektryków</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -16,132 +17,93 @@
         .hidden { display: none; }
         .map-container { filter: grayscale(1) invert(0.92) contrast(1.2); }
         .text-glow { text-shadow: 0 0 10px rgba(234, 179, 8, 0.5); }
-        input, textarea { background-color: #1f2937 !important; border: 1px solid #374151 !important; color: white !important; }
-        input:focus { border-color: #eab308 !important; outline: none; }
+        input, textarea, select { background-color: #1f2937 !important; border: 1px solid #374151 !important; color: white !important; }
+        input:focus, textarea:focus, select:focus { border-color: #eab308 !important; outline: none; }
         main { flex: 1; }
+        .oferomat-mini-box {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 2px 8px;
+            text-decoration: none;
+            color: #1e293b;
+            font-family: sans-serif;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .oferomat-mini-box:hover {
+            border-color: #38bdf8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .o-logo {
+            background: #0f172a;
+            color: white;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+            margin-right: 6px;
+        }
+        .o-logo span { color: #38bdf8; }
+        .o-details { display: flex; flex-direction: column; }
+        .o-title { font-size: 11px; font-weight: 700; line-height: 1; }
+        .o-desc { font-size: 8px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+        .neon-blue { border: 1px solid #1e293b; transition: all 0.4s; }
+        .neon-blue:hover { box-shadow: 0 0 30px #3b82f6; border-color: #3b82f6; transform: translateY(-5px); }
     </style>
 </head>
 <body>
-<a href="https://oferomat.pl" target="_blank" class="oferomat-mini-box">
-    <div class="o-logo">O<span>.</span></div>
-    <div class="o-details">
-        <span class="o-title">Oferomat.pl</span>
-        <span class="o-desc">Porównaj oferty</span>
-    </div>
-</a>
 
-<style>
-.oferomat-mini-box {
-    display: inline-flex;
-    align-items: center;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    padding: 6px 12px;
-    text-decoration: none;
-    color: #1e293b;
-    font-family: sans-serif;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.oferomat-mini-box:hover {
-    border-color: #38bdf8;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.o-logo {
-    background: #0f172a;
-    color: white;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-.o-logo span {
-    color: #38bdf8;
-}
-
-.o-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.o-title {
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-.o-desc {
-    font-size: 10px;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-</style>
-
-    <header class="bg-slate-900/95 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
-                <div class="bg-yellow-500 text-slate-900 p-2 rounded-lg font-black text-xl italic"><div class="bg-yellow-500 text-slate-900 w-10 h-10 rounded-lg flex items-center justify-center shadow-[0_0_15px_#eab308]">
-        <i class="fa fa-bolt text-2xl animate-pulse"></i>
-    </div></div>
-                <span class="text-xl font-black tracking-tighter uppercase italic">Zlecenia<span class="text-yellow-500">Elektryczne</span></span>
+    <!-- Baner Oferomatu -->
+    <div class="fixed top-1 left-2 z-[60]">
+        <a href="https://oferomat.pl" target="_blank" class="oferomat-mini-box">
+            <div class="o-logo">O<span>.</span></div>
+            <div class="o-details">
+                <span class="o-title">Oferomat.pl</span>
+                <span class="o-desc">Porównaj oferty</span>
             </div>
+        </a>
+    </div>
+
+    <!-- Header -->
+    <header class="bg-slate-900/95 backdrop-blur-md border-b border-slate-800 sticky top-0 z-40 pt-7 sm:pt-0">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            
+            <!-- Logo strony -->
+            <div class="flex items-center space-x-2 cursor-pointer" onclick="showPage('home')">
+                <div class="bg-yellow-500 text-slate-900 w-8 h-8 rounded-lg flex items-center justify-center shadow-[0_0_15px_#eab308] shrink-0">
+                    <i class="fa fa-bolt text-lg animate-pulse"></i>
+                </div>
+                <span class="text-lg sm:text-xl font-black tracking-tighter uppercase italic">Zlecenia<span class="text-yellow-500">Elektryczne</span></span>
+            </div>
+
+            <!-- Menu Nawigacji -->
             <nav class="hidden md:flex space-x-6 text-xs font-bold uppercase italic">
                 <button onclick="showPage('home')" class="hover:text-yellow-500 transition">Giełda</button>
                 <button onclick="showPage('prices')" class="hover:text-yellow-500 transition">Cennik</button>
                 <button onclick="showPage('contact')" class="hover:text-yellow-500 transition">Kontakt</button>
                 <button onclick="showPage('add')" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-full hover:bg-yellow-400 transition">Dodaj zlecenie</button>
             </nav>
+
             <button class="md:hidden text-yellow-500 text-2xl" onclick="showPage('add')"><i class="fa fa-plus-circle"></i></button>
         </div>
     </header>
 
     <section id="map-section" class="w-full h-[200px] border-b border-slate-800 relative bg-slate-900">
-        <iframe class="w-full h-full map-container opacity-30" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2500000!2d19.1451!3d52.0689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1700000000000" frameborder="0"></iframe>
+        <iframe class="w-full h-full map-container opacity-30" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2500000!2d19.1451!3d52.0689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spl!2spl!4v1700000000000" frameborder="0" loading="lazy"></iframe>
         <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent pointer-events-none"></div>
-        <div class="absolute inset-0 flex items-center justify-center">
-            
-        </div>
     </section>
 
     <main class="container mx-auto px-4 py-8">
-<section id="premium-form" class="hidden max-w-2xl mx-auto py-10">
-    <div class="bg-slate-900 p-8 rounded-3xl border border-red-500 shadow-2xl">
-        <h3 class="text-xl font-black text-red-500 text-center uppercase mb-6 italic">Dodaj swoją firmę</h3>
-        
-        <div class="space-y-4">
-            <input type="text" id="p-nip" placeholder="NIP FIRMY" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
-            <input type="text" id="p-name" placeholder="NAZWA FIRMY" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
-            <select id="p-type" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
-                <option value="Elektryka">ELEKTRYKA</option>
-                <option value="Teletechnika">TELETECHNIKA</option>
-            </select>
-            <input type="tel" id="p-tel" placeholder="TELEFON" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
-            <textarea id="p-desc" placeholder="KRÓTKI OPIS" class="w-full p-4 rounded-xl text-sm italic h-24 bg-slate-800 text-white border border-slate-700"></textarea>
-            
-            <p class="text-[9px] text-slate-500 uppercase font-black italic text-center">
-                Kliknięcie przycisku otworzy Revolut oraz przygotuje wiadomość e-mail z danymi.
-            </p>
 
-            <button onclick="sendPartnerRequest()" class="w-full bg-red-600 text-white py-4 rounded-xl font-black uppercase text-xs shadow-lg hover:bg-red-500 transition">
-                WYŚLIJ I WESPRZYJ (1000 PLN / ROK)
-            </button>
-            
-            <button onclick="showPage('home')" class="w-full text-slate-600 text-[10px] font-black uppercase underline">Anuluj</button>
-        </div>
-    </div>
-</section>
-
+        <!-- SEKCJA: HOME -->
         <section id="home">
             <div class="flex flex-wrap gap-2 mb-8 justify-center">
                 <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Warszawa</span>
@@ -150,661 +112,410 @@
                 <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Poznań</span>
                 <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Gdańsk</span>
             </div>
+
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="card-glow p-6 rounded-2xl border border-slate-800">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-yellow-500 font-black italic text-xs uppercase tracking-tighter">Zlecenie #VZ-883</span>
+                        <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">BEZPŁATNE</span>
                     </div>
-                </div>
-
-               <div class="card-glow p-6 rounded-2xl border border-slate-800">
-    <div class="flex justify-between items-center mb-4">
-        <span class="text-yellow-500 font-black italic text-xs uppercase tracking-tighter">Zlecenie #VZ-883</span>
-        <span class="text-slate-500 text-[9px] font-bold uppercase tracking-widest">NIE AKTYWNE</span>
-    </div>
-    <h3 class="text-lg font-black uppercase italic mb-1">Awaria - brak prądu</h3>
-    <p class="text-blue-400 text-[10px] font-bold uppercase mb-4"><i class="fa fa-map-marker-alt mr-1"></i> Wrocław (Krzyki)</p>
-    <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">Wyrzuca różnicówkę przy próbie włączenia światła w kuchni. Pilne.</p>
-    
-    <div id="box-3">
-        <button onclick="unlockContact('3', 'Nieaktualne')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-black text-[10px] uppercase italic transition shadow-lg">
-            Odblokuj numer 
-        </button>
-    </div>
-</div>
-
+                    <h3 class="text-lg font-black uppercase italic mb-1">Awaria - brak prądu</h3>
+                    <p class="text-blue-400 text-[10px] font-bold uppercase mb-4"><i class="fa fa-map-marker-alt mr-1"></i> Wrocław (Krzyki)</p>
+                    <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">Wyrzuca różnicówkę przy próbie włączenia światła w kuchni. Pilne.</p>
+                    
+                    <div id="box-3">
+                        <button onclick="unlockContact('3', '600 000 000')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-black text-[10px] uppercase italic transition shadow-lg">
+                            Pokaż numer telefonu 
+                        </button>
                     </div>
                 </div>
             </div>
-        
-            <style>
-    .neon-blue { border: 1px solid #1e293b; transition: all 0.4s; }
-    .neon-blue:hover { box-shadow: 0 0 30px #3b82f6; border-color: #3b82f6; transform: translateY(-5px); }
-    .neon-yellow { border: 1px solid #1e293b; transition: all 0.4s; }
-    .neon-yellow:hover { box-shadow: 0 0 30px #eab308; border-color: #eab308; transform: translateY(-5px); }
-    .neon-red { border: 2px dashed rgba(239, 68, 68, 0.2); transition: all 0.4s; }
-    .neon-red:hover { box-shadow: 0 0 30px #ef4444; border-color: #ef4444; transform: translateY(-5px); }
-</style>
 
-<section class="container mx-auto px-4 py-16">
-    <div class="flex items-center gap-4 mb-10">
-        <div class="h-[1px] bg-slate-800 flex-grow"></div>
-        <h3 class="text-xs font-black uppercase italic text-slate-500 tracking-[0.3em]">Nasi Partnerzy</h3>
-        <div class="h-[1px] bg-slate-800 flex-grow"></div>
-    </div>
+            <!-- SKRÓT ARTYKUŁU -->
+            <div class="max-w-2xl mx-auto mb-10">
+                <div onclick="showPage('article-news')" class="card-glow p-6 rounded-2xl border border-yellow-500/30 cursor-pointer group relative overflow-hidden bg-gradient-to-r from-slate-900 via-slate-900 to-slate-850">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-yellow-500/20 text-yellow-500 text-[9px] font-black uppercase px-2 py-1 rounded border border-yellow-500/40 italic">
+                            <i class="fa fa-newspaper mr-1"></i> Rynkowe Trendy
+                        </span>
+                        <span class="text-slate-500 text-[9px] font-bold uppercase">Czytaj artykuł</span>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden border border-slate-800 mb-4 h-48 md:h-56">
+                        <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcS7QObROKPR7v80dnkQMIYIOOAle5XGTieOcxGiUFyIP2dmGGOVSYqwPqQTuKstTI_t_oJR2w-3I3y-QZs" alt="Sukces finansowy i wysokie zarobki elektryka" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
 
-    <div class="cursor-pointer neon-blue bg-slate-900 p-6 rounded-2xl text-center group relative overflow-hidden h-[200px] flex flex-col justify-center">
-    <div class="absolute top-2 right-2 bg-blue-500 text-white text-[7px] font-black px-1 rounded uppercase tracking-tighter shadow-sm z-10">Zaufany</div>
-    
-    <div class="transition-all duration-500 group-hover:opacity-0 group-hover:scale-50">
-        <div class="w-16 h-16 bg-blue-600/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-            <i class="fa fa-wifi text-3xl text-blue-500"></i>
-        </div>
-        <h5 class="text-[11px] font-black uppercase italic text-blue-400">FREENET</h5>
-        <p class="text-[8px] text-slate-500 mb-2 uppercase italic font-bold">Jastrzębie-Zdrój</p>
-        <div class="text-yellow-500 text-[8px]"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></div>
-    </div>
-
-    <div class="absolute inset-0 p-4 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-10 group-hover:translate-y-0 bg-slate-900 border-2 border-blue-500/50 rounded-2xl">
-        <h5 class="text-[10px] font-black uppercase text-blue-400 mb-1">FREENET</h5>
-        <p class="text-white text-[9px] font-bold uppercase mb-2">
-            <i class="fa fa-map-marker-alt text-blue-500 mr-1"></i> ul. Katowicka 33, Jastrzębie
-        </p>
-        <p class="text-slate-400 text-[8px] italic leading-tight mb-3 uppercase font-bold">
-            Internet radiowy, Serwis Komputerowy i profesjonalna pomoc techniczna.
-        </p>
-        <a href="tel:+48790647236" class="bg-blue-600 text-white text-[10px] font-black py-2 px-6 rounded-lg uppercase hover:bg-blue-500 transition shadow-[0_0_15px_rgba(37,99,235,0.4)]">
-            <i class="fa fa-phone-alt mr-1"></i> 790 647 236
-        </a>
-    </div>
-</div>
-
-
-        <div onclick="openCompany('volt')" class="cursor-pointer neon-yellow bg-slate-900 p-6 rounded-2xl text-center group">
-            <div class="w-16 h-16 bg-yellow-600/10 rounded-full mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition duration-500">
-                <i class="fa fa-bolt text-3xl text-yellow-500"></i>
-            </div>
-            <h5 class="text-[11px] font-black uppercase italic text-yellow-500">Miejsce na Twoją Firmę</h5>
-            <p class="text-[8px] text-slate-500 mb-2 uppercase italic font-bold">Zostań partnerem portalu i otrzymuj zlecenia jako pierwszy
-
-</p>
-            <div class="text-yellow-500 text-[8px]"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-        </div>
-
-<div onclick="showPage('premium-form')" class="cursor-pointer neon-red bg-slate-950 p-6 rounded-2xl border-2 border-dashed border-red-500/20 text-center group transition-all hover:border-red-500">
-    <i class="fa fa-handshake text-2xl text-red-600 mb-3 group-hover:scale-110 transition block"></i>
-    <h5 class="text-[9px] font-black uppercase text-red-500 italic">ZOSTAŃ PARTNEREM</h5>
-    <p class="text-[7px] text-slate-500 mt-1 font-bold italic underline">Wsparcie serwisu na rok</p>
-</div>
-    </div>
-</section>
- 
-        </section>
-
-        <section id="sms-get-code" class="hidden max-w-xl mx-auto py-10">
-            <div class="bg-slate-900 p-8 rounded-3xl border border-blue-500 shadow-2xl italic">
-                <h3 class="text-2xl font-black text-blue-400 text-center uppercase mb-8 italic">Odbierz kod dostępu</h3>
-                <div class="space-y-6">
-                    <div class="max-w-2xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl italic">
-    
-    <div class="bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-center">
-        <h2 class="text-white font-black uppercase tracking-tighter text-2xl">Odbierz kod dostępu</h2>
-        <p class="text-blue-100 text-[10px] uppercase font-bold mt-1">Weryfikacja ręczna: SMS w ciągu 24h</p>
-    </div>
-
-    <div class="p-6 space-y-6">
-        
-        <div class="flex items-start gap-3 bg-white/5 p-4 rounded-2xl border border-white/10 transition-all" id="terms-container">
-            <input type="checkbox" id="accept-terms" onchange="toggleRevolutButton()" 
-                   class="w-5 h-5 mt-1 cursor-pointer accent-yellow-500 rounded border-slate-700 bg-slate-800">
-            <label for="accept-terms" class="text-[10px] text-slate-300 uppercase font-bold cursor-pointer select-none leading-tight">
-                Akceptuję pełny <button onclick="showPage('legal')" class="text-yellow-500 underline hover:text-yellow-400">regulamin serwisu</button>, 
-                
-            </label>
-        </div>
-
-        <div id="revolut-content" class="opacity-30 pointer-events-none transition-opacity duration-300">
-            <div class="flex items-center gap-2 mb-4">
-                <span class="bg-yellow-500 text-slate-900 w-6 h-6 rounded-full flex items-center justify-center font-black text-xs not-italic">1</span>
-                <p class="text-yellow-500 font-black uppercase text-xs">Darowizna Revolut</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=DAROWIZNA%20KOD%20(WPISZ%20SWOJ%20TEL)" 
-                   target="_blank" 
-                   class="flex flex-col items-center justify-center p-4 bg-blue-600/20 border border-blue-500/30 rounded-2xl hover:bg-blue-600/40 transition group">
-                    <span class="text-white font-bold text-sm mb-1">Kliknij w link</span>
-                    <span class="text-[9px] text-blue-300 uppercase text-center font-black">Link Revolut.me</span>
-                </a>
-
-                
-            </div>
-
-            <div class="bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-2xl mt-4">
-                <p class="text-[10px] text-yellow-500 font-black uppercase mb-1 text-center">W tytule wpisz koniecznie:</p>
-                <p class="text-white text-center font-black text-sm uppercase tracking-wide">DAROWIZNA KOD [TWÓJ NUMER TEL]</p>
-            </div>
-        </div>
-
-        <div class="bg-red-500/10 border border-red-500/20 p-3 rounded-xl">
-            <p class="text-[9px] text-red-400 text-center font-bold uppercase">
-                ⚠️ Wpłaty bez numeru tel w notatce będą zwracane automatycznie.
-            </p>
-        </div>
-    </div>
-</div>
-
-<script>
-    function toggleRevolutButton() {
-        const checkbox = document.getElementById('accept-terms');
-        const content = document.getElementById('revolut-content');
-        
-        if (checkbox.checked) {
-            content.classList.remove('opacity-30', 'pointer-events-none');
-        } else {
-            content.classList.add('opacity-30', 'pointer-events-none');
-        }
-    }
-</script>
-
+                    <h4 class="text-base font-black uppercase italic text-white group-hover:text-yellow-500 transition mb-2">
+                        Przełom na rynku pracy: Czy elektryk wkrótce zarobi więcej niż lekarz?
+                    </h4>
+                    <p class="text-slate-400 text-xs italic leading-relaxed mb-4">
+                        Rosnący deficyt fachowców, boom na fotowoltaikę, pompy ciepła i nowoczesną automatykę domową wywracają rynek do góry nogami. Stawki godzinowe za pracę wykwalifikowanych elektryków rosną w zastraszającym tempie...
+                    </p>
+                    <div class="flex items-center text-yellow-500 font-black text-[10px] uppercase italic gap-1 group-hover:translate-x-1 transition-transform">
+                        <span>Czytaj pełny artykuł</span>
+                        <i class="fa fa-arrow-right"></i>
+                    </div>
                 </div>
-                <button onclick="showPage('home')" class="mt-8 w-full text-slate-600 uppercase font-black text-[10px]">Wróć do giełdy</button>
             </div>
+
+            <!-- PARTNERZY -->
+            <section class="container mx-auto px-4 py-8">
+                <div class="flex items-center gap-4 mb-10">
+                    <div class="h-[1px] bg-slate-800 flex-grow"></div>
+                    <h3 class="text-xs font-black uppercase italic text-slate-500 tracking-[0.3em]">Nasi Partnerzy</h3>
+                    <div class="h-[1px] bg-slate-800 flex-grow"></div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-1 max-w-md mx-auto gap-6">
+                    <div class="cursor-pointer neon-blue bg-slate-900 p-6 rounded-2xl text-center group relative overflow-hidden h-[200px] flex flex-col justify-center">
+                        <div class="absolute top-2 right-2 bg-blue-500 text-white text-[7px] font-black px-1 rounded uppercase tracking-tighter shadow-sm z-10">Zaufany</div>
+                        <div class="transition-all duration-500 group-hover:opacity-0 group-hover:scale-50">
+                            <div class="w-16 h-16 bg-blue-600/10 rounded-full mx-auto mb-4 flex items-center justify-center">
+                                <i class="fa fa-wifi text-3xl text-blue-500"></i>
+                            </div>
+                            <h5 class="text-[11px] font-black uppercase italic text-blue-400">FREENET</h5>
+                            <p class="text-[8px] text-slate-500 mb-2 uppercase italic font-bold">Jastrzębie-Zdrój</p>
+                            <div class="text-yellow-500 text-[8px]"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        </div>
+                        <div class="absolute inset-0 p-4 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-10 group-hover:translate-y-0 bg-slate-900 border-2 border-blue-500/50 rounded-2xl">
+                            <h5 class="text-[10px] font-black uppercase text-blue-400 mb-1">FREENET</h5>
+                            <p class="text-white text-[9px] font-bold uppercase mb-2"><i class="fa fa-map-marker-alt text-blue-500 mr-1"></i> ul. Katowicka 33, Jastrzębie</p>
+                            <p class="text-slate-400 text-[8px] italic leading-tight mb-3 uppercase font-bold">Internet radiowy, Serwis Komputerowy i pomoc techniczna.</p>
+                            <a href="tel:+48790647236" class="bg-blue-600 text-white text-[10px] font-black py-2 px-6 rounded-lg uppercase hover:bg-blue-500 transition shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+                                <i class="fa fa-phone-alt mr-1"></i> 790 647 236
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </section>
-<section id="add" class="hidden max-w-2xl mx-auto py-10">
-    <div class="bg-slate-900 p-8 rounded-3xl border border-yellow-500 shadow-2xl">
-        <h3 class="text-2xl font-black text-yellow-500 text-center uppercase mb-8 italic text-glow">Dodaj ogłoszenie przez SMS</h3>
-        
-        <div class="space-y-4">
-            <input type="text" id="f-city" placeholder="MIASTO (NP. POZNAŃ)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic bg-slate-800 text-white border border-slate-700">
-            <textarea id="f-desc" placeholder="CO JEST DO ZROBIENIA? (NP. PODŁĄCZENIE KUCHNI)" class="w-full p-4 rounded-xl text-sm italic h-24 bg-slate-800 text-white border border-slate-700"></textarea>
-            <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON DLA ELEKTRYKA" class="w-full p-4 rounded-xl font-bold text-sm italic bg-slate-800 text-white border border-slate-700">
-            
-            <div class="bg-blue-950/20 p-6 rounded-3xl border border-blue-500/20 italic mt-6">
-                <h4 class="text-blue-400 font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
-                    <i class="fa fa-heart animate-pulse"></i> Wsparcie społeczności
-                </h4>
-                
-                <p class="text-[10px] text-slate-300 uppercase font-bold leading-relaxed mb-4">
-                    Prowadzimy tę giełdę prywatnie, aby ułatwić Wam kontakt z fachowcami. Jeśli chcesz pomóc nam utrzymać serwer i rozwijać stronę, będziemy wdzięczni za symboliczną cegiełkę.
+
+        <!-- PODSTRONA: FULL ARTYKUŁ -->
+        <section id="article-news" class="hidden max-w-3xl mx-auto py-6 italic">
+            <button onclick="showPage('home')" class="mb-6 inline-flex items-center gap-2 text-yellow-500 font-black text-xs uppercase hover:underline">
+                <i class="fa fa-arrow-left"></i> Wróć do giełdy
+            </button>
+            <article class="bg-slate-900 p-8 rounded-3xl border border-slate-800 shadow-2xl leading-relaxed space-y-6">
+                <div class="border-b border-slate-800 pb-6">
+                    <span class="text-yellow-500 text-[10px] font-black uppercase tracking-widest block mb-2">Raport Rynkowy</span>
+                    <h1 class="text-2xl md:text-3xl font-black uppercase italic text-white tracking-tight leading-tight">
+                        Elektryk z pensją wyższą niż lekarz? Rynek pracy przeżywa potężne przewartościowanie
+                    </h1>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden border border-slate-800 shadow-xl my-4">
+                    <img src="https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcS7QObROKPR7v80dnkQMIYIOOAle5XGTieOcxGiUFyIP2dmGGOVSYqwPqQTuKstTI_t_oJR2w-3I3y-QZs" alt="Sukces finansowy w branży elektrycznej" class="w-full h-64 md:h-96 object-cover">
+                    <p class="text-[9px] text-slate-500 text-center py-2 bg-slate-950 font-bold uppercase tracking-wider">Sukces finansowy i wysokie zarobki w branży elektrycznej biją kolejne rekordy.</p>
+                </div>
+
+                <p class="text-slate-300 text-xs font-bold uppercase">
+                    Jeszcze dekadę temu to studia medyczne czy prawnicze uważane były za jedyną gwarancję najwyższych zarobków. Dziś rzeczywistość rynkowa zaskakuje nawet samych ekonomistów.
                 </p>
 
-                <div class="text-[9px] text-slate-500 space-y-2 leading-relaxed uppercase font-bold border-t border-slate-800 pt-4 mb-4">
-                    <p>• Nie jesteśmy firmą ani pośrednikiem – łączymy ludzi z pasji.</p>
-                    <p>• Nie bierzemy odpowiedzialności za terminowość i jakość prac – wybieraj fachowca mądrze.</p>
-                    <p>• Pamiętaj o sprawdzeniu uprawnień SEP przed dopuszczeniem do prac.</p>
-                    <p>• Twoje ogłoszenie z numerem telefonu będzie widoczne dla wszystkich użytkowników.</p>
+                <div class="space-y-4 text-slate-400 text-xs">
+                    <h3 class="text-white font-black text-sm uppercase italic">Dlaczego finanse fachowców idą w górę?</h3>
+                    <p>
+                        Głównym czynnikiem jest drastyczny niedobór młodych kadr. Odejście doświadczonych elektryków na emeryturę oraz wieloletni spadek popularności szkół zawodowych doprowadziły do luki pokoleniowej. Jednocześnie zapotrzebowanie na usługi instalacyjne dynamicznie rośnie.
+                    </p>
+                    <p>
+                        Transformacja energetyczna, inteligentne domy (Smart Home), stacje ładowania pojazdów elektrycznych czy kompleksowe wymiany instalacji w starym budownictwie sprawiają, że wykwalifikowany elektryk z pełnymi uprawnieniami SEP posiada umiejętności na wagę złota.
+                    </p>
                 </div>
 
-                <div class="flex items-start gap-3">
-                    <input type="checkbox" id="f-reg" class="w-6 h-6 mt-1 cursor-pointer accent-yellow-500 shrink-0">
-                    <label for="f-reg" class="text-[10px] text-slate-400 uppercase font-black cursor-pointer select-none leading-tight">
-                        Rozumiem zasady, akceptuję <button type="button" onclick="showPage('legal')" class="text-blue-400 underline">regulamin</button>
-                    </label>
+                <div class="bg-black/50 border-l-4 border-yellow-500 p-4 rounded-r-xl my-6">
+                    <p class="text-yellow-500 text-xs font-black uppercase">
+                        "Samodzielny wykonawca realizujący kompleksowe instalacje w domach jednorodzinnych potrafi w sezonie osiągać przychody przewyższające zarobki specjalistów z wielu innych branż."
+                    </p>
                 </div>
-            </div>
 
-            <div class="grid grid-cols-1 gap-3">
-                <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=Wsparcie%20serwisu%20ogloszenie" 
-                   target="_blank" 
-                   class="block w-full bg-blue-600 text-white text-center py-4 rounded-xl font-black uppercase text-xs hover:bg-blue-500 transition shadow-lg border-b-4 border-blue-800 active:border-b-0">
-                    WESPRZYJ SERWIS (30 ZŁ DAROWIZNA)
-                </a>
+                <div class="space-y-4 text-slate-400 text-xs">
+                    <h3 class="text-white font-black text-sm uppercase italic">Podsumowanie</h3>
+                    <p>
+                        Czas, w którym praca fizyczna połączona z wiedzą techniczną była niedoceniana, odchodzi w przeszłość. Wszystko wskazuje na to, że w najbliższych latach usługi elektryczne będą stale drożeć, a dobrze wyszkoleni specjaliści dyktować będą własne warunki finansowe na rynku.
+                    </p>
+                </div>
+
+                <div class="pt-6 border-t border-slate-800 flex justify-between items-center">
+                    <button onclick="showPage('home')" class="bg-yellow-500 text-slate-900 px-6 py-3 rounded-xl font-black uppercase text-[10px] hover:bg-yellow-400 transition">
+                        Powrót do giełdy
+                    </button>
+                    <button onclick="showPage('add')" class="text-blue-400 text-[10px] font-black uppercase hover:underline">
+                        Dodaj własne zlecenie
+                    </button>
+                </div>
+            </article>
+        </section>
+
+        <!-- DODAWANIE OGŁOSZENIA E-MAILEM -->
+        <section id="add" class="hidden max-w-2xl mx-auto py-10">
+            <div class="bg-slate-900 p-8 rounded-3xl border border-yellow-500 shadow-2xl">
+                <h3 class="text-2xl font-black text-yellow-500 text-center uppercase mb-8 italic text-glow">Dodaj ogłoszenie E-mailem</h3>
                 
-                <div class="relative py-2 flex items-center">
-                    <div class="flex-grow border-t border-slate-800"></div>
-                    <span class="flex-shrink mx-4 text-[9px] text-slate-600 font-black uppercase">Następnie</span>
-                    <div class="flex-grow border-t border-slate-800"></div>
-                </div>
+                <div class="space-y-6">
+                    <div class="space-y-4">
+                        <input type="text" id="f-city" placeholder="MIASTO (NP. POZNAŃ)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic">
+                        <textarea id="f-desc" placeholder="CO JEST DO ZROBIENIA? (NP. PODŁĄCZENIE KUCHNI)" class="w-full p-4 rounded-xl text-sm italic h-24"></textarea>
+                        <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON DLA ELEKTRYKA" class="w-full p-4 rounded-xl font-bold text-sm italic">
+                        
+                        <div class="flex items-start gap-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
+                            <input type="checkbox" id="f-reg" class="w-6 h-6 mt-1 cursor-pointer accent-yellow-500 shrink-0">
+                            <label for="f-reg" class="text-[10px] text-slate-400 uppercase font-black cursor-pointer select-none leading-tight">
+                                Rozumiem zasady i akceptuję <button type="button" onclick="showPage('legal')" class="text-blue-400 underline">regulamin serwisu</button> oraz zgadzam się na opublikowanie numeru telefonu.
+                            </label>
+                        </div>
 
-                <button onclick="sendFuchaSMS()" class="w-full bg-yellow-500 text-slate-900 py-4 rounded-xl font-black uppercase text-xs hover:bg-yellow-400 transition-all active:scale-95 shadow-[0_0_20px_rgba(234,179,8,0.2)]">
-                    WYŚLIJ OGŁOSZENIE SMS-EM
-                </button>
-            </div>
-            <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
-                <div class="space-y-4">
-                    <h4 class="text-sm font-black uppercase italic text-white flex items-center gap-3">
-                        <i class="fa fa-mobile-screen-button text-yellow-500"></i> Dodaj ręcznie przez SMS
-                    </h4>
-                    <div class="bg-black/40 p-6 rounded-3xl border border-dashed border-slate-700">
-                        <p class="text-[9px] text-slate-400 font-bold uppercase mb-2">Wyślij SMS na numer:</p>
-                        <p class="text-2xl font-black text-yellow-500 mb-2 italic">503 784 812</p>
-                        <p class="text-[8px] text-slate-500 font-bold uppercase italic">Koszt: wg stawek Twojego operatora.</p>
+                        <button onclick="sendFuchaEmail()" class="w-full bg-yellow-500 text-slate-900 py-4 rounded-xl font-black uppercase text-xs hover:bg-yellow-400 transition-all active:scale-95 shadow-[0_0_20px_rgba(234,179,8,0.2)]">
+                            WYŚLIJ OGŁOSZENIE FORMULARZEM (E-MAIL)
+                        </button>
                     </div>
-            <p class="text-[8px] text-center text-slate-600 uppercase font-black italic mt-2">
-                * Wysłanie SMS-a  (wg stawek Twojego operatora).
-            </p>
-        </div>
-    </div>
-</section>
 
+                    <div class="bg-blue-950/20 p-6 rounded-3xl border border-blue-500/20 italic mt-8">
+                        <h4 class="text-blue-400 font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
+                            <i class="fa fa-info-circle"></i> Informacje o ogłoszeniu
+                        </h4>
+                        
+                        <div class="text-[9px] text-slate-400 space-y-2 leading-relaxed uppercase font-bold border-t border-slate-800 pt-4">
+                            <p>• Publikujemy zlecenia bezpłatnie i bez ukrytych opłat.</p>
+                            <p>• Serwis publikuje wyłącznie treść tekstową – bez załączników i zdjęć.</p>
+                            <p>• Nie bierzemy odpowiedzialności za jakość prac – pamiętaj o weryfikacji uprawnień SEP wykonawcy.</p>
+                            <p>• Twoje ogłoszenie z numerem telefonu będzie widoczne publicznie dla wykonawców.</p>
+                        </div>
+                    </div>
 
-<script>
-function showPage(id) {
-    // Dodaliśmy 'premium-form' do listy sekcji do ukrycia
-    const pages = ['home', 'add', 'prices', 'contact', 'legal', 'premium-partner', 'premium-form'];
-    
-    pages.forEach(p => {
-        const el = document.getElementById(p);
-        if(el) el.classList.add('hidden');
-    });
-    
-    const target = document.getElementById(id);
-    if(target) {
-        target.classList.remove('hidden');
-    } else {
-        console.error("Nie znaleziono sekcji o ID: " + id);
-    }
-    
-    window.scrollTo(0,0);
-}
-
-function sendPartnerRequest() {
-    const nip = document.getElementById('p-nip').value;
-    const name = document.getElementById('p-name').value;
-    
-    if(!nip || !name) {
-        alert("Podaj przynajmniej NIP i nazwę firmy!");
-        return;
-    }
-
-    // 1. Otwiera Revolut w nowej karcie
-    window.open("https://revolut.me/krol1990?currency=PLN&amount=100000&note=PARTNER%20NIP%20" + nip, "_blank");
-    
-    // 2. Przygotowuje dane do wysłania mailem (użytkownik musi kliknąć "Wyślij" w swojej poczcie)
-    const body = `ZGŁOSZENIE PARTNERA\n\nNIP: ${nip}\nFirma: ${name}\nBranża: ${document.getElementById('p-type').value}\nTel: ${document.getElementById('p-tel').value}\nOpis: ${document.getElementById('p-desc').value}`;
-    window.location.href = `mailto:twojelektryk@hotmail.com?subject=NOWY PARTNER ${nip}&body=${encodeURIComponent(body)}`;
-}
-
-function sendFuchaSMS() {
-    const city = document.getElementById('f-city').value;
-    const desc = document.getElementById('f-desc').value;
-    const tel = document.getElementById('f-tel').value;
-    const accepted = document.getElementById('f-reg').checked;
-
-    if (!city || !desc || !tel) {
-        alert("Wypełnij wszystkie pola ogłoszenia!");
-        return;
-    }
-
-    if (!accepted) {
-        alert("Musisz zaakceptować regulamin!");
-        return;
-    }
-
-    // Tworzenie treści SMS
-    const message = `VOLT: MIASTO: ${city}. ZLECENIE: ${desc}. TEL: ${tel}. (DAROWIZNA REVOLUT POSZŁA)`;
-    
-    // Przekierowanie do aplikacji SMS
-    window.location.href = `sms:+48503784812?body=${encodeURIComponent(message)}`;
-}
-</script>
-
-   
-</div>
-
-<style>
-    /* Opcjonalne: ładniejszy pasek przewijania dla tekstu prawnego */
-    .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #eab308; border-radius: 10px; }
-</style>
-
- 
-
-        <section id="prices" class="hidden max-w-4xl mx-auto">
-            <div class="max-w-4xl mx-auto p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl italic">
-    <div class="text-center mb-8">
-        <h2 class="text-white font-black uppercase text-2xl tracking-tighter italic">Orientacyjny Cennik Usług 2026</h2>
-        <p class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest mt-2">Uśrednione stawki rynkowe - woj. mazowieckie / ogólnopolskie</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="space-y-4">
-            <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Instalacje i Montaż</h3>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Punkt elektryczny (podejście)</span>
-                <span class="text-white">140 - 220 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Montaż rozdzielnicy (robocizna)</span>
-                <span class="text-white">od 800 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Podłączenie AGD (z wpisem do gwarancji)</span>
-                <span class="text-white">150 - 250 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Montaż osprzętu (gniazdko/łącznik)</span>
-                <span class="text-white">25 - 45 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Montaż lampy/żyrandola</span>
-                <span class="text-white">80 - 200 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Układanie przewodu (mb)</span>
-                <span class="text-white">8 - 15 zł</span>
-            </div>
-        </div>
-
-        <div class="space-y-4">
-            <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Serwis, Pomiary, Inne</h3>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Pogotowie lokatorskie 24h</span>
-                <span class="text-white">od 350 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Pomiary elektryczne (za 1 pkt)</span>
-                <span class="text-white">20 - 45 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Wymiana licznika / WLZ</span>
-                <span class="text-white">250 - 500 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Lokalizacja usterki (diagnoza)</span>
-                <span class="text-white">150 - 300 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Przegląd instalacji (roczny)</span>
-                <span class="text-white">od 400 zł</span>
-            </div>
-            <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold">
-                <span>Bruzdownie w betonie (mb)</span>
-                <span class="text-white">40 - 70 zł</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="mt-10 p-4 bg-black/50 border-l-2 border-yellow-500 rounded-r-xl">
-        <p class="text-[9px] text-slate-400 leading-relaxed uppercase font-bold">
-            <span class="text-yellow-500">INFORMACJA PRAWNA:</span> Powyższe zestawienie cen ma charakter wyłącznie poglądowy i informacyjny. 
-            Ceny stanowią średnią stawek rynkowych zbieranych z ogólnodostępnych ofert w sieci i nie stanowią oferty handlowej w rozumieniu 
-            Art. 66 par. 1 Kodeksu Cywilnego. Każdy wykonawca na portalu ustala ceny indywidualnie w zależności od stopnia trudności prac, 
-            użytych materiałów oraz lokalizacji. Serwis nie ponosi odpowiedzialności za różnice w wycenach między użytkownikami.
-        </p>
-    </div>
-</div>
+                    <div class="mt-8 pt-6 border-t border-slate-800">
+                        <h4 class="text-sm font-black uppercase italic text-white flex items-center gap-3 mb-4">
+                            <i class="fa fa-envelope text-yellow-500"></i> Wyślij ręcznie na e-mail
+                        </h4>
+                        <div class="bg-black/40 p-6 rounded-3xl border border-dashed border-slate-700 text-center">
+                            <p class="text-[9px] text-slate-400 font-bold uppercase mb-2">Możesz też wysłać treść zlecenia bezpośrednio na adres:</p>
+                            <a href="mailto:twojelektryk@hotmail.com" class="text-xl font-black text-yellow-500 mb-2 italic hover:underline block">twojelektryk@hotmail.com</a>
+                            <p class="text-[8px] text-slate-500 font-bold uppercase italic">W treści podaj: Miasto, Opis prac oraz swój Numer Telefonu.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- CENNIK -->
+        <section id="prices" class="hidden max-w-4xl mx-auto">
+            <div class="p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl italic">
+                <div class="text-center mb-8">
+                    <h2 class="text-white font-black uppercase text-2xl tracking-tighter italic">Orientacyjny Cennik Usług</h2>
+                    <p class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest mt-2">Uśrednione stawki rynkowe - woj. mazowieckie / ogólnopolskie</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-4">
+                        <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Instalacje i Montaż</h3>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Punkt elektryczny (podejście)</span><span class="text-white">140 - 220 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Montaż rozdzielnicy (robocizna)</span><span class="text-white">od 800 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Podłączenie AGD (z wpisem do gwarancji)</span><span class="text-white">150 - 250 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Montaż osprzętu (gniazdko/łącznik)</span><span class="text-white">25 - 45 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Montaż lampy/żyrandola</span><span class="text-white">80 - 200 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Układanie przewodu (mb)</span><span class="text-white">8 - 15 zł</span></div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Serwis, Pomiary, Inne</h3>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Pogotowie lokatorskie 24h</span><span class="text-white">od 350 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Pomiary elektryczne (za 1 pkt)</span><span class="text-white">20 - 45 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Wymiana licznika / WLZ</span><span class="text-white">250 - 500 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Lokalizacja usterki (diagnoza)</span><span class="text-white">150 - 300 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Przegląd instalacji (roczny)</span><span class="text-white">od 400 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Bruzdownie w betonie (mb)</span><span class="text-white">40 - 70 zł</span></div>
+                    </div>
+                </div>
+
+                <div class="mt-10 p-4 bg-black/50 border-l-2 border-yellow-500 rounded-r-xl">
+                    <p class="text-[9px] text-slate-400 leading-relaxed uppercase font-bold">
+                        <span class="text-yellow-500">INFORMACJA PRAWNA:</span> Powyższe zestawienie cen ma charakter wyłącznie poglądowy i informacyjny. Ceny nie stanowią oferty handlowej w rozumieniu Art. 66 par. 1 Kodeksu Cywilnego. Każdy wykonawca na portalu ustala ceny indywidualnie.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- KONTAKT -->
         <section id="contact" class="hidden max-w-xl mx-auto text-center py-20 italic">
             <h2 class="text-3xl font-black text-yellow-500 uppercase italic mb-6">Kontakt</h2>
             <p class="text-slate-400 uppercase font-bold text-sm leading-loose">
-                Masz pytania dotyczące ogłoszeń? <br>
-                <span class="text-white block mt-4 text-xl">twojelektryk@hotmail.com</span>
-                <span class="text-blue-400 block mt-2">Tel: Wkrótce</span>
+                Masz pytania dotyczące ogłoszeń lub serwisu? <br>
+                <a href="mailto:twojelektryk@hotmail.com" class="text-white block mt-4 text-xl hover:underline">twojelektryk@hotmail.com</a>
             </p>
         </section>
-<section id="legal" class="hidden max-w-4xl mx-auto italic">
-    <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 text-[10px] uppercase font-bold text-slate-400 leading-relaxed text-justify shadow-2xl">
-        
-        <div class="text-center mb-8">
-            <h2 class="text-xl font-black text-yellow-500 uppercase italic">Zasady Serwisu i Informacja Prawna</h2>
-            <p class="text-[8px] text-slate-600 mt-2 tracking-widest">OSTATNIA AKTUALIZACJA: 10.04.2026 R.</p>
-        </div>
-        
-          
-</head>
-<body>
-    <h1>Regulamin i Polityka Prywatności</h1>
-    <p><strong>Właściciel Serwisu:</strong> <br>
-       <strong>Kontakt:</strong> <a href="mailto:twojelektryk@hotmail.com">twojelektryk@hotmail.com</a></p>
 
-    <div class="section" id="status-serwisu">
-        <h2>1. Status Serwisu i Administratora</h2>
-        <ul>
-            <li>ZleceniaElektryczne.pl (dalej: „Serwis”) jest prywatną platformą informacyjną o charakterze hobbystycznym, prowadzoną przez osobę fizyczną –(dalej: „Administrator”).</li>
-            <li>Serwis nie jest firmą, agencją pośrednictwa pracy ani podmiotem gospodarczym.</li>
-            <li>Administrator nie prowadzi działalności gospodarczej i nie wystawia faktur VAT ani rachunków.</li>
-            <li>Serwis pełni funkcję tablicy ogłoszeń umożliwiającej kontakt pomiędzy Użytkownikami.</li>
-        </ul>
-    </div>
+        <!-- REGULAMIN -->
+        <section id="legal" class="hidden max-w-4xl mx-auto italic">
+            <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 text-[10px] uppercase font-bold text-slate-400 leading-relaxed text-justify shadow-2xl">
+                
+                <div class="text-center mb-8">
+                    <h2 class="text-xl font-black text-yellow-500 uppercase italic">Zasady Serwisu i Polityka Prywatności</h2>
+                    <p class="text-[8px] text-slate-600 mt-2 tracking-widest">AKTUALIZACJA DOKUMENTU: ZGODNIE Z NORMAMI RODO I DSA</p>
+                </div>
 
-    <div class="section" id="definicje">
-        <h2>2. Definicje</h2>
-        <ul>
-            <li><strong>Użytkownik</strong> – każda osoba korzystająca z Serwisu, w tym Zleceniodawcy i Wykonawcy.</li>
-            <li><strong>Ogłoszenie</strong> – treść publikowana w Serwisie przez Użytkownika w celu nawiązania kontaktu między Zleceniodawcą a Wykonawcą.</li>
-            <li><strong>Darowizna</strong> – dobrowolna wpłata na rzecz Administratora, wspierająca utrzymanie i rozwój Serwisu.</li>
-        </ul>
-    </div>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-yellow-500 font-black text-xs mb-2">1. STATUS SERWISU I ADMINISTRATORA</h3>
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li>ZleceniaElektryczne.pl (dalej: „Serwis”) jest darmową platformą informacyjno-ogłoszeniową.</li>
+                            <li><strong>Administrator Serwisu:</strong> Arkadiusz Kaczmarczyk, kontakt e-mail: <a href="mailto:twojelektryk@hotmail.com" class="text-yellow-500 underline">twojelektryk@hotmail.com</a>.</li>
+                            <li>Serwis umożliwia bezpłatną publikację ogłoszeń i nie pobiera żadnych opłat od użytkowników.</li>
+                        </ul>
+                    </div>
 
-    <div class="section" id="warunki-korzystania">
-        <h2>3. Warunki korzystania z Serwisu</h2>
-        <ul>
-            <li>Korzystanie z Serwisu jest dobrowolne i następuje na własną odpowiedzialność Użytkownika.</li>
-            <li>Użytkownik musi mieć ukończone 18 lat.</li>
-            <li>Wykonawcy prac elektrycznych muszą posiadać aktualne uprawnienia SEP oraz inne wymagane prawem certyfikaty.</li>
-            <li>Użytkownik zobowiązuje się korzystać z Serwisu zgodnie z prawem, niniejszym Regulaminem i dobrymi obyczajami.</li>
-        </ul>
-    </div>
+                    <div>
+                        <h3 class="text-yellow-500 font-black text-xs mb-2">2. ZASADY ZGŁASZANIA I PUBLIKACJI OGŁOSZEŃ</h3>
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li>Dodawanie ogłoszeń w Serwisie odbywa się bezpłatnie poprzez formularz kontaktowy lub wysłanie wiadomości e-mail na adres <span class="text-white">twojelektryk@hotmail.com</span>.</li>
+                            <li><strong>Brak obsługi załączników:</strong> Serwis publikuje wyłącznie treść tekstową (Miasto, Opis prac, Numer telefonu kontaktowego). Załączniki graficzne są usuwane.</li>
+                            <li><strong>Przetwarzanie danych:</strong> Dodając ogłoszenie, użytkownik wyraża zgodę na opublikowanie podanego numeru telefonu oraz treści zlecenia.</li>
+                            <li>Administrator zastrzega sobie prawo do weryfikacji treści przed publikacją oraz do usunięcia ogłoszenia bez podania przyczyny, w szczególności gdy narusza ono prawo lub dobre obyczaje.</li>
+                            <li>Użytkownik może w każdej chwili zażądać usunięcia swojego ogłoszenia, wysyłając wiadomość e-mail na adres Administratora.</li>
+                        </ul>
+                    </div>
 
-    <div class="section" id="zasady-ogloszen">
-        <h2>4. Zasady publikacji ogłoszeń</h2>
-        <ul>
-            <li>Publikacja ogłoszeń jest <strong>bezpłatna</strong>.</li>
-            <li>Użytkownicy mogą dobrowolnie wspierać Serwis darowizną (sugerowana kwota: 30 PLN), np. w celu zwiększenia widoczności ogłoszenia lub publikacji numeru telefonu.</li>
-            <li>Ogłoszenia muszą być zgodne z prawem, nie wprowadzać w błąd, nie zawierać spamu ani treści obraźliwych.</li>
-            <li>Administrator zastrzega sobie prawo do usunięcia ogłoszenia bez podania przyczyny.</li>
-            <li>Ogłoszenia są przechowywane w Serwisie przez 30 dni lub do momentu żądania ich usunięcia przez Użytkownika.</li>
-            <li>Użytkownik odpowiada za prawdziwość podanych danych i treści ogłoszenia.</li>
-        </ul>
-    </div>
+                    <div>
+                        <h3 class="text-yellow-500 font-black text-xs mb-2">3. ODPOWIEDZIALNOŚĆ I BEZPIECZEŃSTWO</h3>
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li>Administrator nie weryfikuje tożsamości, uprawnień SEP ani kwalifikacji wykonawców i zleceniodawców.</li>
+                            <li>Administrator nie jest stroną umów zawieranych między Użytkownikami i nie ponosi odpowiedzialności za jakość, terminowość ani bezpieczeństwo wykonywanych prac elektrycznych.</li>
+                            <li>Zleceniodawca ma obowiązek samodzielnie sprawdzić uprawnienia zawodowe wykonawcy przed dopuszczeniem go do prac pod napięciem.</li>
+                        </ul>
+                    </div>
 
-    <div class="section" id="darowizny">
-        <h2>5. Darowizny</h2>
-        <ul>
-            <li>Wszelkie opłaty sugerowane przez Serwis są <strong>dobrowolnymi darowiznami</strong> i nie stanowią zakupu usługi.</li>
-            <li>Darowizny przeznaczane są wyłącznie na utrzymanie serwisu, domeny i serwera.</li>
-            <li>Darowizny są bezzwrotne.</li>
-            <li>Brak darowizny nie ogranicza funkcjonalności Serwisu.</li>
-        </ul>
-    </div>
+                    <div>
+                        <h3 class="text-yellow-500 font-black text-xs mb-2">4. ZGŁASZANIE NIELEGALNYCH TREŚCI (DSA)</h3>
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li>Zgodnie z Aktem o Usługach Cyfrowych (DSA), każda osoba może zgłaszać treści nielegalne lub naruszające regulamin na adres: <span class="text-white">twojelektryk@hotmail.com</span>.</li>
+                            <li>Zgłoszenie powinno zawierać opisaną przyczynę oraz wskazanie treści (np. numer zlecenia). Administrator niezwłocznie rozpatrzy zgłoszenie.</li>
+                        </ul>
+                    </div>
 
-    <div class="section" id="odpowiedzialnosc">
-        <h2>6. Odpowiedzialność i bezpieczeństwo</h2>
-        <ul>
-            <li>Administrator <strong>nie weryfikuje</strong> tożsamości ani kwalifikacji Użytkowników.</li>
-            <li>Administrator nie ponosi odpowiedzialności za:
-                <ul>
-                    <li>Szkody materialne lub pożary wynikłe z działań Użytkowników</li>
-                    <li>Błędy w treści ogłoszeń</li>
-                    <li>Nieprawidłowe wykonanie prac przez Wykonawców</li>
-                    <li>Przerwy techniczne lub awarie Serwisu</li>
-                </ul>
-            </li>
-            <li>Zleceniodawca ma obowiązek sprawdzenia kwalifikacji i uprawnień wykonawcy przed dopuszczeniem go do pracy.</li>
-            <li>Użytkownicy zobowiązani są do zachowania zasad bezpieczeństwa i stosowania się do przepisów prawa podczas realizacji zleceń.</li>
-        </ul>
-    </div>
+                    <div>
+                        <h3 class="text-yellow-500 font-black text-xs mb-2">5. POLITYKA PRYWATNOŚCI I RODO</h3>
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li><strong>Administrator Danych:</strong> Serwis ZleceniaElektryczne.pl (kontakt: twojelektryk@hotmail.com).</li>
+                            <li><strong>Zakres danych:</strong> W przypadku zgłoszeń przetwarzane są: adres e-mail nadawcy, treść wiadomości, miasto oraz podany numer telefonu.</li>
+                            <li><strong>Cel i podstawa prawna:</strong> Art. 6 ust. 1 lit. b RODO – publikacja ogłoszenia na wniosek Użytkownika.</li>
+                            <li><strong>Okres przechowywania:</strong> Treść ogłoszenia widnieje w Serwisie przez okres do 30 dni lub do momentu zgłoszenia żądania usunięcia.</li>
+                            <li><strong>Prawa Użytkownika:</strong> Każdemu Użytkownikowi przysługuje prawo dostępu do swoich danych, ich sprostowania, usunięcia oraz ograniczenia przetwarzania.</li>
+                        </ul>
+                    </div>
 
-    <div class="section" id="rodo">
-        <h2>7. Polityka prywatności i RODO</h2>
-        <ul>
-            <li>Administratorem danych osobowych jest zleceniaelektryczne.pl</li>
-            <li>Dane zbierane są wyłącznie w celu umożliwienia kontaktu między Użytkownikami i administrowania Serwisem.</li>
-            <li>Dane nie są wykorzystywane w celach marketingowych ani sprzedawane osobom trzecim.</li>
-            <li>Użytkownik może żądać dostępu do swoich danych, ich poprawy lub usunięcia, kontaktując się pod adresem: <a href="mailto:twojelektryk@hotmail.com">twojelektryk@hotmail.com</a></li>
-            <li>Numery telefonów publikowane są <strong>tylko na wyraźną prośbę Użytkownika</strong>.</li>
-        </ul>
-    </div>
+                    <div>
+                        <h3 class="text-yellow-500 font-black text-xs mb-2">6. PLIKI COOKIES</h3>
+                        <ul class="list-disc pl-4 space-y-1">
+                            <li>Serwis stosuje wyłącznie techniczne i niezbędne pliki cookies służące do prawidłowego wyświetlania strony.</li>
+                        </ul>
+                    </div>
+                </div>
 
-    <div class="section" id="cookies">
-        <h2>8. Pliki cookies</h2>
-        <ul>
-            <li>Serwis używa plików cookies w celach statystycznych i technicznych.</li>
-            <li>Pliki cookies nie zawierają danych osobowych, które pozwalałyby na identyfikację Użytkownika.</li>
-            <li>Użytkownik może w każdej chwili zmienić ustawienia przeglądarki, aby zablokować pliki cookies.</li>
-        </ul>
-    </div>
-
-    <div class="section" id="faq">
-        <h2>9. FAQ – najważniejsze informacje dla Użytkowników</h2>
-        <div class="faq-item">
-            <strong>Pytanie:</strong> Czy Serwis pobiera prowizje?<br>
-            <strong>Odpowiedź:</strong> Nie, Serwis działa wyłącznie jako platforma informacyjna, wszystkie wpłaty są dobrowolnymi darowiznami.
-        </div>
-        <div class="faq-item">
-            <strong>Pytanie:</strong> Czy Administrator sprawdza kwalifikacje elektryków?<br>
-            <strong>Odpowiedź:</strong> Nie, sprawdzenie uprawnień i kompetencji wykonawcy należy do Zleceniodawcy.
-        </div>
-        <div class="faq-item">
-            <strong>Pytanie:</strong> Czy numery telefonów są publiczne?<br>
-            <strong>Odpowiedź:</strong> Tak, tylko jeśli Użytkownik wyrazi zgodę na ich publikację.
-        </div>
-        <div class="faq-item">
-            <strong>Pytanie:</strong> Co jeśli ogłoszenie jest niezgodne z regulaminem?<br>
-            <strong>Odpowiedź:</strong> Administrator może je usunąć bez podania przyczyny.
-        </div>
-    </div>
-
-    <div class="section" id="postanowienia">
-        <h2>10. Postanowienia końcowe</h2>
-        <ul>
-            <li>W sprawach nieuregulowanych niniejszym Regulaminem stosuje się przepisy Kodeksu Cywilnego.</li>
-            <li>Administrator zastrzega sobie prawo do zmiany Regulaminu w dowolnym czasie.</li>
-            <li>Spory wynikłe z korzystania z Serwisu rozstrzyga sąd właściwy dla miejsca zamieszkania .</li>
-            <li>Regulamin wchodzi w życie z dniem publikacji na stronie Serwisu.</li>
-        </ul>
-    </div>
-
-    <footer>
-        <p>© ZleceniaElektryczne.pl – Regulamin i Polityka Prywatności</p>
-    </footer>
-
-        </div>
-
-        <div class="mt-8 text-center">
-            <button onclick="showPage('home')" class="bg-yellow-500 text-slate-900 px-10 py-3 rounded-xl font-black uppercase text-[10px] transition hover:bg-yellow-400 shadow-lg">Rozumiem i akceptuję - Wróć</button>
-        </div>
-    </div>
-</section>
+                <div class="mt-8 text-center">
+                    <button onclick="showPage('home')" class="bg-yellow-500 text-slate-900 px-10 py-3 rounded-xl font-black uppercase text-[10px] transition hover:bg-yellow-400 shadow-lg">Rozumiem i akceptuję - Wróć do giełdy</button>
+                </div>
+            </div>
         </section>
-
     </main>
 
     <footer class="bg-slate-900 border-t border-slate-800 py-10">
         <div class="container mx-auto px-4 text-center italic">
-            <p class="text-yellow-500 font-black uppercase italic tracking-widest">Zlecenia Elektryczne 2026</p>
+            <p class="text-yellow-500 font-black uppercase italic tracking-widest">Zlecenia Elektryczne</p>
             <div class="flex flex-wrap justify-center gap-6 mt-6 text-[10px] font-black uppercase text-slate-500">
                 <button onclick="showPage('legal')" class="hover:text-white transition underline">Regulamin</button>
                 <button onclick="showPage('legal')" class="hover:text-white transition underline">Polityka Prywatności</button>
                 <button onclick="showPage('prices')" class="hover:text-white transition underline">Cennik</button>
                 <button onclick="showPage('contact')" class="hover:text-white transition underline">Kontakt</button>
             </div>
-            <p class="mt-8 text-[12px] text-slate-700 uppercase">Projekt prywatny - 100% Darowizny na utrzymanie</p>
+            <p class="mt-8 text-[12px] text-slate-700 uppercase">Bezpłatna Giełda Zleceń Elektrycznych</p>
         </div>
     </footer>
 
+    <div id="cookie-bar" class="fixed bottom-0 left-0 w-full bg-slate-900 border-t border-yellow-500/50 p-5 z-[100] hidden italic shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+        <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="space-y-1">
+                <p class="text-[11px] text-white uppercase font-black italic">Informacja o prywatności</p>
+                <p class="text-[9px] text-slate-400 uppercase font-bold leading-relaxed text-justify md:text-left max-w-3xl">
+                    Używamy niezbędnych plików cookies, aby giełda działała poprawnie. 
+                    <span class="text-slate-300">Nie śledzimy Cię w celach reklamowych.</span> 
+                    Korzystając ze strony, akceptujesz nasze <button onclick="showPage('legal')" class="text-yellow-500 underline hover:text-yellow-400">zasady serwisu</button>.
+                </p>
+            </div>
+            <button onclick="acceptCookies()" class="bg-yellow-500 text-slate-900 px-8 py-3 rounded-xl font-black uppercase text-[10px] hover:bg-yellow-400 transition-all shadow-[0_0_15px_rgba(234,179,8,0.4)] shrink-0 active:scale-95">
+                Rozumiem i akceptuję
+            </button>
+        </div>
+    </div>
+
     <script>
         function showPage(id) {
-            const pages = ['home', 'add', 'prices', 'contact', 'legal', 'sms-get-code'];
-            pages.forEach(p => document.getElementById(p).classList.add('hidden'));
+            const pages = ['home', 'add', 'prices', 'contact', 'legal', 'article-news'];
+            pages.forEach(p => {
+                const el = document.getElementById(p);
+                if(el) el.classList.add('hidden');
+            });
             
-            document.getElementById(id).classList.remove('hidden');
+            const target = document.getElementById(id);
+            if(target) target.classList.remove('hidden');
             
-            // Mapę pokazujemy tylko na stronie głównej
-            if(id === 'home') {
-                document.getElementById('map-section').classList.remove('hidden');
-            } else {
-                document.getElementById('map-section').classList.add('hidden');
+            const mapSec = document.getElementById('map-section');
+            if(mapSec) {
+                if(id === 'home') {
+                    mapSec.classList.remove('hidden');
+                } else {
+                    mapSec.classList.add('hidden');
+                }
             }
             window.scrollTo(0,0);
         }
 
-        function submitBySms() {
+        function sendFuchaEmail() {
             const city = document.getElementById('f-city').value;
             const desc = document.getElementById('f-desc').value;
             const tel = document.getElementById('f-tel').value;
-            const reg = document.getElementById('f-reg').checked;
+            const accepted = document.getElementById('f-reg').checked;
 
-            if(!city || !desc || !tel) {
-                alert("Wypełnij wszystkie pola!");
-                return;
-            }
-            if(!reg) {
-                alert("Musisz zaakceptować regulamin!");
+            if (!city || !desc || !tel) {
+                alert("Wypełnij wszystkie pola ogłoszenia!");
                 return;
             }
 
-            const body = `DAROWIZNA OPLACONA. ZLECENIE: ${city}, ${desc}, TEL: ${tel}`;
-            window.location.href = `sms:503784812?body=${encodeURIComponent(body)}`;
+            if (!accepted) {
+                alert("Musisz zaakceptować regulamin, aby wysłać ogłoszenie!");
+                return;
+            }
+
+            const subject = `NOWE ZLECENIE: ${city}`;
+            const body = `MIASTO: ${city}\nZLECENIE: ${desc}\nTEL: ${tel}\n\n(Zaakceptowano regulamin serwisu)`;
+            
+            window.location.href = `mailto:twojelektryk@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
 
-        function unlockAd(id, phone) {
-            const code = document.getElementById('code-'+id).value;
-            // Tutaj zdefiniuj swój uniwersalny kod, który wysyłasz ludziom po wpłacie
-            if(code === "1212") {
-                document.getElementById('box-'+id).innerHTML = `
-                    <a href="tel:${phone.replace(/\s/g, '')}" class="flex items-center justify-center bg-green-600 p-4 rounded-xl font-black text-lg italic border-2 border-green-400 animate-pulse uppercase">
-                        📞 POŁĄCZ: ${phone}
-                    </a>
+        function unlockContact(id, phone) {
+            const box = document.getElementById('box-' + id);
+            if(box) {
+                box.innerHTML = `
+                    <div class="border-t border-slate-800 pt-4 animate-fade-in">
+                        <a href="tel:+48${phone.replace(/\s/g, '')}" class="block w-full bg-green-600 hover:bg-green-500 text-white text-center py-4 rounded-xl font-black text-xl italic transition">
+                            <i class="fa fa-phone-alt mr-2"></i> ${phone}
+                        </a>
+                    </div>
                 `;
-            } else {
-                alert("BŁĘDNY KOD! Wyślij 30 zł BLIK i odbierz kod przez SMS.");
             }
         }
-    </script>
-        <div id="cookie-bar" class="fixed bottom-0 left-0 w-full bg-slate-900 border-t border-yellow-500/50 p-5 z-[100] hidden italic shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
-    <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        <div class="space-y-1">
-            <p class="text-[11px] text-white uppercase font-black italic">Informacja o prywatności</p>
-            <p class="text-[9px] text-slate-400 uppercase font-bold leading-relaxed text-justify md:text-left max-w-3xl">
-                Używamy niezbędnych plików cookies, aby giełda działała poprawnie (zapamiętywanie ustawień, obsługa mapy). 
-                <span class="text-slate-300">Nie śledzimy Cię w celach reklamowych i nie sprzedajemy Twoich danych.</span> 
-                Korzystając ze strony, akceptujesz nasze <button onclick="showPage('legal')" class="text-yellow-500 underline hover:text-yellow-400">zasady serwisu i darowizn</button>.
-            </p>
-        </div>
-        <button onclick="acceptCookies()" class="bg-yellow-500 text-slate-900 px-8 py-3 rounded-xl font-black uppercase text-[10px] hover:bg-yellow-400 transition-all shadow-[0_0_15px_rgba(234,179,8,0.4)] shrink-0 active:scale-95">
-            Rozumiem i akceptuję
-        </button>
-    </div>
-</div>
 
-<script>
-function unlockContact(id, phone) {
-    const box = document.getElementById('box-' + id);
-    box.innerHTML = `
-        <div class="border-t border-slate-800 pt-4 animate-fade-in">
-            <a href="tel:+48${phone.replace(/\s/g, '')}" class="block w-full bg-green-600 hover:bg-green-500 text-white text-center py-4 rounded-xl font-black text-xl italic transition mb-4">
-                <i class="fa fa-phone-alt mr-2"></i> ${phone}
-            </a>
-
-            <div class="bg-blue-900/30 border border-blue-500/30 p-4 rounded-xl text-center">
-                <p class="text-[9px] text-blue-300 font-black uppercase mb-3 tracking-tighter">
-                    Wsparcie na prowadzenie serwisu:
-                </p>
-                
-                <a href="https://revolut.me/krol1990?currency=PLN&amount=3000&note=Wsparcie%20serwisu%20Zlecenie%20${id}" 
-                   target="_blank" 
-                   class="inline-block bg-white text-blue-900 px-4 py-2 rounded-lg font-black text-[9px] uppercase hover:bg-blue-100 transition mb-3">
-                   WPŁAĆ 30 ZŁ (REVOLUT)
-                </a>
-
-                <div class="flex justify-center gap-4 border-t border-blue-500/10 pt-3">
-                    <button onclick="showPage('legal')" class="text-[8px] text-slate-500 uppercase font-bold hover:text-white transition underline">Regulamin</button>
-                    <span class="text-slate-700">|</span>
-                    <p class="text-[8px] text-slate-500 uppercase font-bold italic">Darowizna Art. 888 KC</p>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-    function checkCookies() {
-        if (!localStorage.getItem('cookiesAccepted_v1')) {
-            document.getElementById('cookie-bar').classList.remove('hidden');
+        function checkCookies() {
+            if (!localStorage.getItem('cookiesAccepted_v1')) {
+                const cb = document.getElementById('cookie-bar');
+                if(cb) cb.classList.remove('hidden');
+            }
         }
-    }
 
-    function acceptCookies() {
-        localStorage.setItem('cookiesAccepted_v1', 'true');
-        document.getElementById('cookie-bar').classList.add('hidden');
-    }
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted_v1', 'true');
+            const cb = document.getElementById('cookie-bar');
+            if(cb) cb.classList.add('hidden');
+        }
 
-    // Wywołanie przy starcie
-    window.addEventListener('DOMContentLoaded', checkCookies);
-</script>
-
+        window.addEventListener('DOMContentLoaded', checkCookies);
+    </script>
 </body>
-</html>                               
-    
+</html>
