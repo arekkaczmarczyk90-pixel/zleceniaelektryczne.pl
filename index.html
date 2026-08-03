@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta name="robots" content="index, follow">
-    <meta name="description" content="Giełda zleceń elektrycznych – dodaj zlecenie dla elektryka lub znajdź wykonawcę z Twojej okolicy. Wymiana kontaktów, instalacje, naprawy i inne prace elektryczne.">
+    <meta name="description" content="Giełda zleceń elektrycznych – dodaj zlecenie dla elektryka, znajdź fachowca lub opublikuj ogłoszenie o poszukiwaniu pracy w branży elektrycznej i teletechnicznej.">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZLECENIA ELEKTRYCZNE | Prywatna Giełda dla Elektryków</title>
@@ -14,6 +13,8 @@
         body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: white; scroll-behavior: smooth; display: flex; flex-direction: column; min-height: 100vh; }
         .card-glow { transition: all 0.3s ease; border: 1px solid #1e293b; background: #111827; }
         .card-glow:hover { box-shadow: 0 0 20px rgba(234, 179, 8, 0.2); border-color: #eab308; transform: translateY(-2px); }
+        .card-glow-green { transition: all 0.3s ease; border: 1px solid #1e293b; background: #111827; }
+        .card-glow-green:hover { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); border-color: #22c55e; transform: translateY(-2px); }
         .hidden { display: none; }
         .map-container { filter: grayscale(1) invert(0.92) contrast(1.2); }
         .text-glow { text-shadow: 0 0 10px rgba(234, 179, 8, 0.5); }
@@ -55,8 +56,8 @@
         .o-details { display: flex; flex-direction: column; }
         .o-title { font-size: 11px; font-weight: 700; line-height: 1; }
         .o-desc { font-size: 8px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
-        .neon-blue { border: 1px solid #1e293b; transition: all 0.4s; }
-        .neon-blue:hover { box-shadow: 0 0 30px #3b82f6; border-color: #3b82f6; transform: translateY(-5px); }
+        .neon-blue { border: 1px solid #3b82f6; box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); transition: all 0.4s; }
+        .neon-blue:hover { box-shadow: 0 0 30px #3b82f6; border-color: #60a5fa; transform: translateY(-3px); }
     </style>
 </head>
 <body>
@@ -89,7 +90,7 @@
                 <button onclick="showPage('home')" class="hover:text-yellow-500 transition">Giełda</button>
                 <button onclick="showPage('prices')" class="hover:text-yellow-500 transition">Cennik</button>
                 <button onclick="showPage('contact')" class="hover:text-yellow-500 transition">Kontakt</button>
-                <button onclick="showPage('add')" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-full hover:bg-yellow-400 transition">Dodaj zlecenie</button>
+                <button onclick="showPage('add')" class="bg-yellow-500 text-slate-900 px-4 py-2 rounded-full hover:bg-yellow-400 transition">Dodaj ogłoszenie</button>
             </nav>
 
             <button class="md:hidden text-yellow-500 text-2xl" onclick="showPage('add')"><i class="fa fa-plus-circle"></i></button>
@@ -107,13 +108,19 @@
         <section id="home">
             <div class="flex flex-wrap gap-2 mb-8 justify-center">
                 <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Warszawa</span>
-                <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Kraków</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Katowice</span>
                 <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Wrocław</span>
+                <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Kraków</span>
                 <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Poznań</span>
-                <span class="bg-slate-800 px-3 py-1 rounded-full text-[10px] font-bold uppercase italic border border-slate-700">Gdańsk</span>
             </div>
 
-            <div class="max-w-2xl mx-auto mb-8">
+            <!-- SEKCJA ZLECENIA (KLIENT ZLECA) -->
+            <div class="max-w-2xl mx-auto mb-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-yellow-500 text-xs font-black uppercase italic tracking-widest"><i class="fa fa-briefcase mr-1"></i> Najnowsze Zlecenia</span>
+                    <div class="h-[1px] bg-slate-800 flex-grow"></div>
+                </div>
+
                 <div class="card-glow p-6 rounded-2xl border border-slate-800">
                     <div class="flex justify-between items-center mb-4">
                         <span class="text-yellow-500 font-black italic text-xs uppercase tracking-tighter">Zlecenie #VZ-883</span>
@@ -124,10 +131,82 @@
                     <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">Wyrzuca różnicówkę przy próbie włączenia światła w kuchni. Pilne.</p>
                     
                     <div id="box-3">
-                        <button onclick="unlockContact('3', 'Brak ')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-black text-[10px] uppercase italic transition shadow-lg">
+                        <button onclick="unlockContact('3', '600 000 000')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-black text-[10px] uppercase italic transition shadow-lg">
                             Pokaż numer telefonu 
                         </button>
                     </div>
+                </div>
+            </div>
+
+            <!-- SEKCJA TABLICA: SZUKAM PRACY / PODWYKONAWSTWA -->
+            <div class="max-w-2xl mx-auto mb-10">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-blue-400 text-xs font-black uppercase italic tracking-widest"><i class="fa fa-user-check mr-1"></i> Szukam Pracy / Podwykonawstwa</span>
+                    <div class="h-[1px] bg-slate-800 flex-grow"></div>
+                </div>
+
+                <div class="space-y-4">
+
+                    <!-- PODŚWIETLONE OGŁOSZENIE (NIEBIESKI NEON) -->
+                    <div class="neon-blue p-6 rounded-2xl bg-slate-900">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="bg-blue-500/20 text-blue-400 text-[9px] font-black uppercase px-2 py-1 rounded border border-blue-500/30 italic">
+                                SZUKAM STAŁEJ PRACY / SERWIS
+                            </span>
+                            <span class="text-slate-500 text-[9px] font-bold uppercase">SEP G1 do 1 kV</span>
+                        </div>
+                        
+                        <h3 class="text-lg font-black uppercase italic mb-1 text-white">
+                            Elektryk z uprawnieniami SEP do 1 kV (Eksploatacja) – Szukam pracy
+                        </h3>
+                        
+                        <p class="text-blue-400 text-[10px] font-bold uppercase mb-4">
+                            <i class="fa fa-map-marker-alt mr-1"></i> Warszawa i okolice | Prawo Jazdy Kat. B
+                        </p>
+                        
+                        <p class="text-slate-300 text-xs italic mb-4 leading-relaxed">
+                            Mam 36 lat, posiadam uprawnienia SEP G1 do 1 kV (eksploatacja) oraz kilkuletnie doświadczenie w branży elektrycznej. Szukam stałej pracy jako elektryk lub pomocnik elektryka na terenie Warszawy i okolic.
+                        </p>
+
+                        <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">
+                            Ze względu na stan zdrowia szukam pracy bez ciężkiego dźwigania i dużych obciążeń fizycznych. Mogę wykonywać m.in. montaż, naprawy, podłączanie urządzeń, osprzętu elektrycznego oraz prace serwisowe. Jestem sumienny, dokładny i odpowiedzialny.
+                        </p>
+                        
+                        <div id="box-p3">
+                            <button onclick="unlockContact('p3', '786 259 909')" class="w-full bg-blue-600 hover:bg-blue-500 text-white py-4 rounded-xl font-black text-[10px] uppercase italic transition shadow-[0_0_15px_rgba(37,99,235,0.4)]">
+                                Pokaż numer telefonu (786 259 909)
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- POZOSTAŁE OGŁOSZENIA -->
+                    <div class="card-glow-green p-6 rounded-2xl border border-slate-800">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="bg-green-500/20 text-green-400 text-[9px] font-black uppercase px-2 py-1 rounded border border-green-500/30 italic">
+                                PRZYJMĘ ZLECENIA / PODWYKONAWSTWO
+                            </span>
+                            <span class="text-slate-500 text-[9px] font-bold uppercase">Wolne terminy</span>
+                        </div>
+                        
+                        <h3 class="text-lg font-black uppercase italic mb-1 text-white">
+                            Elektryka, teletechnika, montaż kamer i sieci internetowych
+                        </h3>
+                        
+                        <p class="text-green-400 text-[10px] font-bold uppercase mb-4">
+                            <i class="fa fa-map-marker-alt mr-1"></i> Warszawa | Katowice | Wrocław i okolice
+                        </p>
+                        
+                        <p class="text-slate-400 text-xs italic mb-6 leading-relaxed">
+                            Przyjmę zlecenia oraz podwykonawstwo w zakresie instalacji elektrycznych i teletechnicznych. Oferuję profesjonalny montaż kamer (monitoring CCTV), wykonywanie oraz konfigurowanie sieci internetowych (LAN/Wi-Fi), a także pełny zakres prac elektrycznych. Szybka realizacja i rzetelne wykonanie.
+                        </p>
+                        
+                        <div id="box-p2">
+                            <button onclick="unlockContact('p2', ' Wkrótce')" class="w-full bg-green-600 hover:bg-green-500 text-white py-4 rounded-xl font-black text-[10px] uppercase italic transition shadow-lg">
+                                Pokaż numer do fachowca
+                            </button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -190,7 +269,7 @@
             </section>
         </section>
 
-        <!-- PODSTRONA: FULL ARTYKUŁ -->
+        <!-- PODSTRONA: ARTYKUŁ -->
         <section id="article-news" class="hidden max-w-3xl mx-auto py-6 italic">
             <button onclick="showPage('home')" class="mb-6 inline-flex items-center gap-2 text-yellow-500 font-black text-xs uppercase hover:underline">
                 <i class="fa fa-arrow-left"></i> Wróć do giełdy
@@ -240,7 +319,7 @@
                         Powrót do giełdy
                     </button>
                     <button onclick="showPage('add')" class="text-blue-400 text-[10px] font-black uppercase hover:underline">
-                        Dodaj własne zlecenie
+                        Dodaj własne ogłoszenie
                     </button>
                 </div>
             </article>
@@ -253,9 +332,17 @@
                 
                 <div class="space-y-6">
                     <div class="space-y-4">
-                        <input type="text" id="f-city" placeholder="MIASTO (NP. POZNAŃ)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic">
-                        <textarea id="f-desc" placeholder="CO JEST DO ZROBIENIA? (NP. PODŁĄCZENIE KUCHNI)" class="w-full p-4 rounded-xl text-sm italic h-24"></textarea>
-                        <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON DLA ELEKTRYKA" class="w-full p-4 rounded-xl font-bold text-sm italic">
+                        <div>
+                            <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 italic">Kategoria ogłoszenia:</label>
+                            <select id="f-type" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic">
+                                <option value="SZUKAM WYKONAWCY (ZLECENIE)">Szukam wykonawcy (Chcę zlecić pracę)</option>
+                                <option value="SZUKAM PRACY / PODWYKONAWSTWA">Szukam pracy / Przyjmę zlecenia (Jestem elektrykiem)</option>
+                            </select>
+                        </div>
+
+                        <input type="text" id="f-city" placeholder="MIASTO / OBSZAR (NP. WARSZAWA / KATOWICE / WROCŁAW)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic">
+                        <textarea id="f-desc" placeholder="OPIS (NP. SZUKAM PRACY JAKO ELEKTRYK LUB CHCĘ ZLECIĆ MONTAŻ KAMER)" class="w-full p-4 rounded-xl text-sm italic h-28"></textarea>
+                        <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON KONTAKTOWY" class="w-full p-4 rounded-xl font-bold text-sm italic">
                         
                         <div class="flex items-start gap-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
                             <input type="checkbox" id="f-reg" class="w-6 h-6 mt-1 cursor-pointer accent-yellow-500 shrink-0">
@@ -275,10 +362,10 @@
                         </h4>
                         
                         <div class="text-[9px] text-slate-400 space-y-2 leading-relaxed uppercase font-bold border-t border-slate-800 pt-4">
-                            <p>• Publikujemy zlecenia bezpłatnie i bez ukrytych opłat.</p>
+                            <p>• Publikujemy zlecenia i oferty pracy bezpłatnie.</p>
                             <p>• Serwis publikuje wyłącznie treść tekstową – bez załączników i zdjęć.</p>
-                            <p>• Nie bierzemy odpowiedzialności za jakość prac – pamiętaj o weryfikacji uprawnień SEP wykonawcy.</p>
-                            <p>• Twoje ogłoszenie z numerem telefonu będzie widoczne publicznie dla wykonawców.</p>
+                            <p>• Nie bierzemy odpowiedzialności za jakość prac ani warunki zatrudnienia.</p>
+                            <p>• Twoje ogłoszenie z numerem telefonu będzie widoczne publicznie na stronie.</p>
                         </div>
                     </div>
 
@@ -287,9 +374,9 @@
                             <i class="fa fa-envelope text-yellow-500"></i> Wyślij ręcznie na e-mail
                         </h4>
                         <div class="bg-black/40 p-6 rounded-3xl border border-dashed border-slate-700 text-center">
-                            <p class="text-[9px] text-slate-400 font-bold uppercase mb-2">Możesz też wysłać treść zlecenia bezpośrednio na adres:</p>
+                            <p class="text-[9px] text-slate-400 font-bold uppercase mb-2">Możesz też wysłać treść zlecenia lub oferty bezpośrednio na adres:</p>
                             <a href="mailto:twojelektryk@hotmail.com" class="text-xl font-black text-yellow-500 mb-2 italic hover:underline block">twojelektryk@hotmail.com</a>
-                            <p class="text-[8px] text-slate-500 font-bold uppercase italic">W treści podaj: Miasto, Opis prac oraz swój Numer Telefonu.</p>
+                            <p class="text-[8px] text-slate-500 font-bold uppercase italic">W treści podaj: Typ (Zlecenie/Praca), Miasto, Opis oraz swój Numer Telefonu.</p>
                         </div>
                     </div>
                 </div>
@@ -301,7 +388,7 @@
             <div class="p-6 bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl italic">
                 <div class="text-center mb-8">
                     <h2 class="text-white font-black uppercase text-2xl tracking-tighter italic">Orientacyjny Cennik Usług</h2>
-                    <p class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest mt-2">Uśrednione stawki rynkowe - woj. mazowieckie / ogólnopolskie</p>
+                    <p class="text-yellow-500 text-[10px] font-bold uppercase tracking-widest mt-2">Uśrednione stawki rynkowe - ogólnopolskie</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -309,19 +396,19 @@
                         <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Instalacje i Montaż</h3>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Punkt elektryczny (podejście)</span><span class="text-white">140 - 220 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Montaż rozdzielnicy (robocizna)</span><span class="text-white">od 800 zł</span></div>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Montaż punktu kamer (CCTV)</span><span class="text-white">150 - 300 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Podłączenie AGD (z wpisem do gwarancji)</span><span class="text-white">150 - 250 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Montaż osprzętu (gniazdko/łącznik)</span><span class="text-white">25 - 45 zł</span></div>
-                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Montaż lampy/żyrandola</span><span class="text-white">80 - 200 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Układanie przewodu (mb)</span><span class="text-white">8 - 15 zł</span></div>
                     </div>
 
                     <div class="space-y-4">
-                        <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Serwis, Pomiary, Inne</h3>
+                        <h3 class="text-blue-500 font-black text-xs uppercase border-b border-blue-500/20 pb-2">Teletechnika, Serwis, Pomiary</h3>
+                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Konfiguracja sieci / Wi-Fi / LAN</span><span class="text-white">200 - 400 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Pogotowie lokatorskie 24h</span><span class="text-white">od 350 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Pomiary elektryczne (za 1 pkt)</span><span class="text-white">20 - 45 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Wymiana licznika / WLZ</span><span class="text-white">250 - 500 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Lokalizacja usterki (diagnoza)</span><span class="text-white">150 - 300 zł</span></div>
-                        <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Przegląd instalacji (roczny)</span><span class="text-white">od 400 zł</span></div>
                         <div class="flex justify-between text-[11px] text-slate-300 uppercase font-bold"><span>Bruzdownie w betonie (mb)</span><span class="text-white">40 - 70 zł</span></div>
                     </div>
                 </div>
@@ -357,7 +444,7 @@
                         <h3 class="text-yellow-500 font-black text-xs mb-2">1. STATUS SERWISU I ADMINISTRATORA</h3>
                         <ul class="list-disc pl-4 space-y-1">
                             <li>ZleceniaElektryczne.pl (dalej: „Serwis”) jest darmową platformą informacyjno-ogłoszeniową.</li>
-                            <li><strong>Administrator Serwisu:</strong> Arkadiusz Kaczmarczyk, kontakt e-mail: <a href="mailto:twojelektryk@hotmail.com" class="text-yellow-500 underline">twojelektryk@hotmail.com</a>.</li>
+                            <li><strong>Administrator Serwisu:</strong> Arkadiusz Kaczmarczyk (osoba fizyczna nieprowadząca działalności gospodarczej), kontakt e-mail: <a href="mailto:twojelektryk@hotmail.com" class="text-yellow-500 underline">twojelektryk@hotmail.com</a>.</li>
                             <li>Serwis umożliwia bezpłatną publikację ogłoszeń i nie pobiera żadnych opłat od użytkowników.</li>
                         </ul>
                     </div>
@@ -365,10 +452,10 @@
                     <div>
                         <h3 class="text-yellow-500 font-black text-xs mb-2">2. ZASADY ZGŁASZANIA I PUBLIKACJI OGŁOSZEŃ</h3>
                         <ul class="list-disc pl-4 space-y-1">
-                            <li>Dodawanie ogłoszeń w Serwisie odbywa się bezpłatnie poprzez formularz kontaktowy lub wysłanie wiadomości e-mail na adres <span class="text-white">twojelektryk@hotmail.com</span>.</li>
-                            <li><strong>Brak obsługi załączników:</strong> Serwis publikuje wyłącznie treść tekstową (Miasto, Opis prac, Numer telefonu kontaktowego). Załączniki graficzne są usuwane.</li>
-                            <li><strong>Przetwarzanie danych:</strong> Dodając ogłoszenie, użytkownik wyraża zgodę na opublikowanie podanego numeru telefonu oraz treści zlecenia.</li>
-                            <li>Administrator zastrzega sobie prawo do weryfikacji treści przed publikacją oraz do usunięcia ogłoszenia bez podania przyczyny, w szczególności gdy narusza ono prawo lub dobre obyczaje.</li>
+                            <li>Dodawanie ogłoszeń w Serwisie (zarówno zleceń, jak i ofert poszukiwania pracy) odbywa się bezpłatnie poprzez formularz kontaktowy lub wysłanie wiadomości e-mail na adres <span class="text-white">twojelektryk@hotmail.com</span>.</li>
+                            <li><strong>Brak obsługi załączników i CV:</strong> Serwis publikuje wyłącznie treść tekstową (Kategoria, Miasto, Opis, Numer telefonu kontaktowego). Załączniki graficzne oraz pliki dokumentów są automatycznie usuwane.</li>
+                            <li><strong>Przetwarzanie danych:</strong> Dodając ogłoszenie, użytkownik wyraża zgodę na opublikowanie podanego numeru telefonu oraz treści zgłoszenia.</li>
+                            <li>Administrator zastrzega sobie prawo do weryfikacji treści przed publikacją oraz do usunięcia ogłoszenia bez podania przyczyny.</li>
                             <li>Użytkownik może w każdej chwili zażądać usunięcia swojego ogłoszenia, wysyłając wiadomość e-mail na adres Administratora.</li>
                         </ul>
                     </div>
@@ -377,8 +464,8 @@
                         <h3 class="text-yellow-500 font-black text-xs mb-2">3. ODPOWIEDZIALNOŚĆ I BEZPIECZEŃSTWO</h3>
                         <ul class="list-disc pl-4 space-y-1">
                             <li>Administrator nie weryfikuje tożsamości, uprawnień SEP ani kwalifikacji wykonawców i zleceniodawców.</li>
-                            <li>Administrator nie jest stroną umów zawieranych między Użytkownikami i nie ponosi odpowiedzialności za jakość, terminowość ani bezpieczeństwo wykonywanych prac elektrycznych.</li>
-                            <li>Zleceniodawca ma obowiązek samodzielnie sprawdzić uprawnienia zawodowe wykonawcy przed dopuszczeniem go do prac pod napięciem.</li>
+                            <li><strong>Brak statusu agencji pracy:</strong> Serwis nie jest agencją pośrednictwa pracy ani agencją zatrudnienia i nie bierze udziału w rekrutacji ani zawieraniu umów.</li>
+                            <li>Administrator nie jest stroną umów zawieranych między Użytkownikami i nie ponosi odpowiedzialności za jakość, terminowość ani bezpieczeństwo wykonywanych prac.</li>
                         </ul>
                     </div>
 
@@ -386,7 +473,7 @@
                         <h3 class="text-yellow-500 font-black text-xs mb-2">4. ZGŁASZANIE NIELEGALNYCH TREŚCI (DSA)</h3>
                         <ul class="list-disc pl-4 space-y-1">
                             <li>Zgodnie z Aktem o Usługach Cyfrowych (DSA), każda osoba może zgłaszać treści nielegalne lub naruszające regulamin na adres: <span class="text-white">twojelektryk@hotmail.com</span>.</li>
-                            <li>Zgłoszenie powinno zawierać opisaną przyczynę oraz wskazanie treści (np. numer zlecenia). Administrator niezwłocznie rozpatrzy zgłoszenie.</li>
+                            <li>Zgłoszenie powinno zawierać opisaną przyczynę oraz wskazanie treści. Administrator niezwłocznie rozpatrzy zgłoszenie.</li>
                         </ul>
                     </div>
 
@@ -429,6 +516,7 @@
         </div>
     </footer>
 
+    <!-- BANER COOKIES -->
     <div id="cookie-bar" class="fixed bottom-0 left-0 w-full bg-slate-900 border-t border-yellow-500/50 p-5 z-[100] hidden italic shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="space-y-1">
@@ -445,6 +533,7 @@
         </div>
     </div>
 
+    <!-- SKRYPTY JAVASCRIPT -->
     <script>
         function showPage(id) {
             const pages = ['home', 'add', 'prices', 'contact', 'legal', 'article-news'];
@@ -468,6 +557,7 @@
         }
 
         function sendFuchaEmail() {
+            const type = document.getElementById('f-type').value;
             const city = document.getElementById('f-city').value;
             const desc = document.getElementById('f-desc').value;
             const tel = document.getElementById('f-tel').value;
@@ -483,8 +573,8 @@
                 return;
             }
 
-            const subject = `NOWE ZLECENIE: ${city}`;
-            const body = `MIASTO: ${city}\nZLECENIE: ${desc}\nTEL: ${tel}\n\n(Zaakceptowano regulamin serwisu)`;
+            const subject = `[${type}] MIASTO: ${city}`;
+            const body = `KATEGORIA: ${type}\nMIASTO: ${city}\nOPIS: ${desc}\nTEL: ${tel}\n\n(Zaakceptowano regulamin serwisu)`;
             
             window.location.href = `mailto:twojelektryk@hotmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         }
@@ -494,7 +584,7 @@
             if(box) {
                 box.innerHTML = `
                     <div class="border-t border-slate-800 pt-4 animate-fade-in">
-                        <a href="tel:+48${phone.replace(/\s/g, '')}" class="block w-full bg-green-600 hover:bg-green-500 text-white text-center py-4 rounded-xl font-black text-xl italic transition">
+                        <a href="tel:+48${phone.replace(/\s/g, '')}" class="block w-full bg-blue-600 hover:bg-blue-500 text-white text-center py-4 rounded-xl font-black text-xl italic transition shadow-[0_0_20px_rgba(37,99,235,0.4)]">
                             <i class="fa fa-phone-alt mr-2"></i> ${phone}
                         </a>
                     </div>
