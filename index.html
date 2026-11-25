@@ -423,59 +423,55 @@
             </article>
         </section>
 
-        <!-- DODAWANIE OGŁOSZENIA E-MAILEM -->
-        <section id="add" class="hidden max-w-2xl mx-auto py-10">
-            <div class="bg-slate-900 p-8 rounded-3xl border border-yellow-500 shadow-2xl">
-                <h3 class="text-2xl font-black text-yellow-500 text-center uppercase mb-8 italic text-glow">Dodaj ogłoszenie E-mailem</h3>
-                
-                <div class="space-y-6">
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-[10px] font-black uppercase text-slate-400 mb-2 italic">Kategoria ogłoszenia:</label>
-                            <select id="f-type" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic">
-                                <option value="SZUKAM WYKONAWCY (ZLECENIE)">Szukam wykonawcy (Chcę zlecić pracę)</option>
-                                <option value="SZUKAM PRACY / PODWYKONAWSTWA">Szukam pracy / Przyjmę zlecenia (Jestem elektrykiem)</option>
-                            </select>
-                        </div>
+        
+<!-- INFORMACJA O ZAWIESZENIU PUBLIKACJI OGŁOSZEŃ -->
+<section id="add" class="max-w-2xl mx-auto py-12 px-4">
+    <div class="relative overflow-hidden bg-slate-900 p-8 md:p-10 rounded-3xl border border-yellow-500/40 shadow-2xl text-center">
 
-                        <input type="text" id="f-city" placeholder="MIASTO / OBSZAR (NP. WARSZAWA / KATOWICE / WROCŁAW)" class="w-full p-4 rounded-xl font-bold uppercase text-sm italic">
-                        <textarea id="f-desc" placeholder="OPIS (NP. SZUKAM PRACY JAKO ELEKTRYK LUB CHCĘ ZLECIĆ MONTAŻ KAMER)" class="w-full p-4 rounded-xl text-sm italic h-28"></textarea>
-                        <input type="tel" id="f-tel" placeholder="TWÓJ TELEFON KONTAKTOWY" class="w-full p-4 rounded-xl font-bold text-sm italic">
-                        
-                        <div class="flex items-start gap-3 bg-slate-950 p-4 rounded-xl border border-slate-800">
-                            <input type="checkbox" id="f-reg" class="w-6 h-6 mt-1 cursor-pointer accent-yellow-500 shrink-0">
-                            <label for="f-reg" class="text-[10px] text-slate-400 uppercase font-black cursor-pointer select-none leading-tight">
-                                Rozumiem zasady i akceptuję <button type="button" onclick="showPage('legal')" class="text-blue-400 underline">regulamin serwisu</button> oraz zgadzam się na opublikowanie numeru telefonu.
-                            </label>
-                        </div>
+        <!-- Dekoracyjny element -->
+        <div class="absolute -top-16 -right-16 w-40 h-40 bg-yellow-500/10 rounded-full blur-3xl"></div>
 
-                        <button onclick="sendFuchaEmail()" class="w-full bg-yellow-500 text-slate-900 py-4 rounded-xl font-black uppercase text-xs hover:bg-yellow-400 transition-all active:scale-95 shadow-[0_0_20px_rgba(234,179,8,0.2)]">
-                            WYŚLIJ OGŁOSZENIE FORMULARZEM (E-MAIL)
-                        </button>
-                    </div>
+        <div class="relative z-10">
 
-                    <div class="bg-blue-950/20 p-6 rounded-3xl border border-blue-500/20 italic mt-8">
-                        <h4 class="text-blue-400 font-black uppercase text-xs tracking-widest mb-4 flex items-center gap-2">
-                            <i class="fa fa-info-circle"></i> Informacje o ogłoszeniu
-                        </h4>
-                        
-                        <div class="text-[9px] text-slate-400 space-y-2 leading-relaxed uppercase font-bold border-t border-slate-800 pt-4">
-                            <p>• Publikujemy zlecenia i oferty pracy bezpłatnie.</p>
-                            <p>• Serwis publikuje wyłącznie treść tekstową – bez załączników i zdjęć.</p>
-                            <p>• Nie bierzemy odpowiedzialności za jakość prac ani warunki zatrudnienia.</p>
-                            <p>• Twoje ogłoszenie z numerem telefonu będzie widoczne publicznie na stronie.</p>
-                        </div>
-                    </div>
+            <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center">
+                <i class="fa fa-pause-circle text-4xl text-yellow-500"></i>
+            </div>
 
-                    <div class="mt-8 pt-6 border-t border-slate-800">
-                        <h4 class="text-sm font-black uppercase italic text-white flex items-center gap-3 mb-4">
-                            <i class="fa fa-envelope text-yellow-500"></i> Wyślij ręcznie na e-mail
-                        </h4>
-                        <div class="bg-black/40 p-6 rounded-3xl border border-dashed border-slate-700 text-center">
-                            <p class="text-[9px] text-slate-400 font-bold uppercase mb-2">Możesz też wysłać treść zlecenia lub oferty bezpośrednio na adres:</p>
-                            <a href="mailto:twojelektryk@hotmail.com" class="text-xl font-black text-yellow-500 mb-2 italic hover:underline block">twojelektryk@hotmail.com</a>
-                            <p class="text-[8px] text-slate-500 font-bold uppercase italic">W treści podaj: Typ (Zlecenie/Praca), Miasto, Opis oraz swój Numer Telefonu.</p>
-                        </div>
+            <span class="inline-block px-4 py-2 mb-5 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-[10px] font-black uppercase tracking-widest">
+                Komunikat serwisu
+            </span>
+
+            <h3 class="text-2xl md:text-3xl font-black uppercase italic text-white mb-5">
+                Publikacja ogłoszeń
+                <span class="block text-yellow-500 mt-1">zawieszona</span>
+            </h3>
+
+            <div class="w-16 h-1 bg-yellow-500 mx-auto rounded-full mb-6"></div>
+
+            <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-5">
+                Informujemy, że przyjmowanie oraz publikowanie nowych ogłoszeń w serwisie zostało czasowo zawieszone.
+            </p>
+
+            <p class="text-white font-bold text-sm md:text-base mb-8">
+                Zawieszenie obowiązuje do odwołania.
+            </p>
+
+            <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-5">
+                <i class="fa fa-info-circle text-yellow-500 text-xl mb-3"></i>
+                <p class="text-slate-400 text-xs leading-relaxed">
+                    O ewentualnym wznowieniu możliwości dodawania ogłoszeń poinformujemy w serwisie.
+                    Prosimy o śledzenie aktualnych komunikatów.
+                </p>
+            </div>
+
+            <p class="text-[9px] text-slate-600 uppercase tracking-widest font-bold mt-7">
+                Dziękujemy za zrozumienie
+            </p>
+
+        </div>
+    </div>
+</section>
+
                     </div>
                 </div>
             </div>
